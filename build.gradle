@@ -1,0 +1,27 @@
+plugins {
+    id 'java-library'
+    id("io.spring.dependency-management") apply false
+    id("org.springframework.boot") apply false
+}
+
+allprojects {
+    group = 'com.example'
+    version = '0.0.1-SNAPSHOT'
+}
+
+subprojects { subproject ->
+
+    apply {
+        plugin("java-library")
+        plugin("io.spring.dependency-management")
+        plugin("org.springframework.boot")
+    }
+
+    dependencies {
+        implementation platform(libs.spring.boot)
+    }
+
+    configurations.all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
