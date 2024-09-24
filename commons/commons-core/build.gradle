@@ -1,0 +1,16 @@
+dependencies {
+    //boot相关依赖
+    api "org.springframework.boot:spring-boot-starter"
+
+    //工具类依赖
+    api libs.log4j2
+    api libs.jackson.databind
+    api libs.jackson.jsr310
+    api libs.modelMapper
+    api libs.fastjson2
+    api libs.hutool
+    api libs.google.guava
+    api libs.commons.lang3
+    api libs.lombok
+    annotationProcessor libs.lombok
+}

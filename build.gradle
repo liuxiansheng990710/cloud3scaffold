@@ -21,7 +21,9 @@ subprojects { subproject ->
         implementation platform(libs.spring.boot)
     }
 
+    //全局剔除依赖
     configurations.all {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
 }

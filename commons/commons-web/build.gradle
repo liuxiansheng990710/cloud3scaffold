@@ -1,0 +1,5 @@
+dependencies {
+    compileOnly project(":commons:commons-core")
+
+    compileOnly "org.springframework.boot:spring-boot-starter-web"
+}

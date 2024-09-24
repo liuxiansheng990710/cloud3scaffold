@@ -26,9 +26,9 @@
 
 ```
 cloud3scaffold
-└── common -- 系统公共模块
-     ├── common-bom -- 全局依赖管理控制
-     ├── common-core -- 公共工具类核心包
+└── commons -- 系统公共模块
+     ├── commons-web -- web配置包
+     ├── commons-core -- 公共配置/依赖包
 ```
 
 ### 问题解决 请查看[帮助文档](./HELP.md)

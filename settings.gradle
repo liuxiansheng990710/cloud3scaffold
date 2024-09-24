@@ -41,6 +41,10 @@ dependencyResolutionManagement {
 
 
 rootProject.name = 'cloud3scaffold'
-
+//-----------------------------------------------公共组件---------------------------------------------------------//
 include 'commons'
+include 'commons:commons-web'
+findProject('commons:commons-web')?.name = 'commons-web'
+include 'commons:commons-core'
+findProject(':commons:commons-core')?.name = 'commons-core'
 
