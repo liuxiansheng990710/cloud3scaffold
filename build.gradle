@@ -7,6 +7,23 @@ plugins {
 allprojects {
     group = 'com.example'
     version = '0.0.1-SNAPSHOT'
+
+    //编译时使用的编码为 UTF-8
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    //控制台能够正确输出中文字符
+    tasks.withType(JavaExec) {
+        jvmArgs '-Dfile.encoding=UTF-8'
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
 }
 
 subprojects { subproject ->
