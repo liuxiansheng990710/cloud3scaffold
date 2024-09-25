@@ -29,5 +29,5 @@ commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "co
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 
 [plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }
-dependency-management = { id = "io.spring.dependency-management", version = "1.1.6" }
+#spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }
+#dependency-management = { id = "io.spring.dependency-management", version = "1.1.6" }
