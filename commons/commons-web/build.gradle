@@ -1,5 +1,8 @@
 dependencies {
-    compileOnly project(":commons:commons-core")
+    api project(":commons:commons-core")
 
-    compileOnly "org.springframework.boot:spring-boot-starter-web"
+    api "org.springframework.boot:spring-boot-starter-web"
+    api "org.springframework.boot:spring-boot-starter-undertow"
+
+    annotationProcessor libs.lombok
 }
