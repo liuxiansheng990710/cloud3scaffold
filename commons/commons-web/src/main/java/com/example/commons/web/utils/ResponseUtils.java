@@ -20,8 +20,6 @@ import com.example.commons.core.utils.TypeUtils;
 import com.example.commons.web.servlet.response.ResponseWrapper;
 import com.google.common.base.Throwables;
 
-import cn.hutool.core.date.DatePattern;
-import cn.hutool.core.date.DateUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolation;
@@ -31,6 +29,16 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ResponseUtils {
+
+    /**
+     * 成功返回，仅限于String类型返回
+     *
+     * @param object
+     * @return
+     */
+    public static Responses<String> success(String object) {
+        return success(ApplicationUtils.getResponse(), HttpStatus.OK, object);
+    }
 
     /**
      * 成功返回，带返回结果
@@ -58,6 +66,7 @@ public class ResponseUtils {
         Responses<T> responses = new Responses<>();
         responses.setStatus(status.value());
         responses.setResult(object);
+        responses.setTime(new Date());
         return responses;
     }
 
@@ -99,7 +108,7 @@ public class ResponseUtils {
                 .setException(getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())
                 .setStatus(errors.getStatus())
-                .setTime(DateUtil.format(new Date(), DatePattern.ISO8601_FORMAT));
+                .setTime(new Date());
     }
 
     /**
@@ -116,7 +125,7 @@ public class ResponseUtils {
                 .setException(StringUtils.isNotBlank(exceptionMsg) ? exceptionMsg : getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())
                 .setStatus(errors.getStatus())
-                .setTime(DateUtil.format(new Date(), DatePattern.ISO8601_FORMAT));
+                .setTime(new Date());
     }
 
     /**

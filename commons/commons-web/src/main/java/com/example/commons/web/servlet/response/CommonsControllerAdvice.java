@@ -43,14 +43,20 @@ public class CommonsControllerAdvice implements ResponseBodyAdvice<Object> {
     }
 
     @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, @NonNull MethodParameter returnType, @NonNull MediaType selectedContentType,
+                                  @NonNull Class selectedConverterType, @NonNull ServerHttpRequest request, @NonNull ServerHttpResponse response) {
+        Object object = body;
         HttpServletResponse servletResponse = ((ServletServerHttpResponse) response).getServletResponse();
-        HttpStatus status = HttpStatus.OK;
-        servletResponse.setStatus(status.value());
-        body = body instanceof Responses ? body : ResponseUtils.<Object>success(servletResponse, status, body);
         HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
-        ResponseUtils.responseAndPrint(servletRequest, servletResponse, body);
-        return body;
+
+        Wrapper annotation = returnType.getMethodAnnotation(Wrapper.class);
+        HttpStatus status = Objects.isNull(annotation) ? HttpStatus.OK : annotation.httpStatus();
+
+        if (Objects.isNull(annotation) || annotation.wrapper()) {
+            object = body instanceof Responses ? body : ResponseUtils.<Object>success(servletResponse, status, body);
+        }
+        ResponseUtils.responseAndPrint(servletRequest, servletResponse, object);
+        return object;
     }
 
 }
