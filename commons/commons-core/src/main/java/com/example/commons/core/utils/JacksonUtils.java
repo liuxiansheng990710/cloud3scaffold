@@ -19,7 +19,6 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -31,7 +30,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JacksonUtils {
 
-    private final static ObjectMapper OBJECT_MAPPER = doInitObjectMapper();
+    private final static ObjectMapper OBJECT_MAPPER = initObjectMapper(new ObjectMapper());
 
     /**
      * 获取ObjectMapper
@@ -45,19 +44,31 @@ public class JacksonUtils {
     /**
      * 初始化 ObjectMapper
      *
+     * @param objectMapper
      * @return
      */
-    private static ObjectMapper doInitObjectMapper() {
-        ObjectMapper objectMapper = JsonMapper.builder()
-                .defaultTimeZone(TimeZone.getTimeZone("GMT+8"))
-                .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
-                .enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)
-                .disable(MapperFeature.PROPAGATE_TRANSIENT_MARKER)
-                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-                .serializationInclusion(JsonInclude.Include.NON_NULL)
-                .build();
+    public static ObjectMapper initObjectMapper(ObjectMapper objectMapper) {
+        if (Objects.isNull(objectMapper)) {
+            objectMapper = new ObjectMapper();
+        }
+        return doInitObjectMapper(objectMapper);
+    }
+
+    /**
+     * 初始化 ObjectMapper 时间方法
+     *
+     * @return
+     */
+    private static ObjectMapper doInitObjectMapper(ObjectMapper objectMapper) {
+        //因需传递http消息中的mapper 所以暂不处理过时方法
+        objectMapper.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        objectMapper.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
+        objectMapper.disable(MapperFeature.PROPAGATE_TRANSIENT_MARKER);
+        objectMapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         return registerModule(objectMapper);
     }
 
