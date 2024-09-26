@@ -2,6 +2,7 @@ package com.example.commons.core.model;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -34,7 +35,7 @@ public class Responses<T> implements Serializable {
 
     private String ranking;
 
-    private String time;
+    private Date time;
 
     private T result;
 

@@ -1,0 +1,204 @@
+package com.example.commons.web.utils;
+
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
+import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
+import org.springframework.core.env.Environment;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.example.commons.core.exceptions.CommonUtilsException;
+import com.example.commons.core.utils.ApplicationContextRegister;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+/**
+ * <p>
+ * spring上下文辅助工具类
+ * </p>
+ *
+ * @author : 21
+ * @since : 2024/9/26 17:32
+ */
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class ApplicationUtils {
+
+    /**
+     * 获取spring Environment
+     *
+     * @return
+     */
+    public static Environment getSpringEnvironment() {
+        return ApplicationContextRegister.getApplicationContext().getEnvironment();
+    }
+
+    /**
+     * 初始化实例
+     *
+     * @param clazz
+     * @param <T>
+     * @return
+     */
+    public static <T> T newInstance(Class<T> clazz) {
+        try {
+            return clazz.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            throw new CommonUtilsException("Error: NewInstance Exception:" + clazz.getName(), e);
+        }
+    }
+
+    /**
+     * 根据名称获取对象，不存在则报错
+     *
+     * @param className
+     * @return
+     */
+    public static Class<?> forName(String className) {
+        try {
+            return Class.forName(className);
+        } catch (ClassNotFoundException e) {
+            throw new CommonUtilsException("Error: forName Exception: String class [" + className + "]", e);
+        }
+    }
+
+    /**
+     * 获取springbean
+     *
+     * @param beanName
+     * @param requiredType
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(String beanName, Class<T> requiredType) {
+        if (containsBean(beanName)) {
+            return ApplicationContextRegister.getApplicationContext().getBean(beanName, requiredType);
+        }
+        return null;
+    }
+
+    /**
+     * 根据类型获取springbean
+     *
+     * @param requiredType
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(Class<T> requiredType) {
+        return ApplicationContextRegister.getApplicationContext().getBean(requiredType);
+    }
+
+    /**
+     * 获取多个springbean
+     *
+     * @param requiredType
+     * @param <T>
+     * @return
+     */
+    public static <T> Map<String, T> getBeansOfType(Class<T> requiredType) {
+        return ApplicationContextRegister.getApplicationContext().getBeansOfType(requiredType);
+    }
+
+    /**
+     * 获取springbean
+     *
+     * @param beanName
+     * @param <T>
+     * @return
+     */
+    public static <T> T getBean(String beanName) {
+        if (containsBean(beanName)) {
+            Class<T> type = getType(beanName);
+            return ApplicationContextRegister.getApplicationContext().getBean(beanName, type);
+        }
+        return null;
+    }
+
+    /**
+     * 依赖spring框架获取HttpServletRequest
+     *
+     * @return HttpServletRequest
+     */
+    public static HttpServletRequest getRequest() {
+        HttpServletRequest request = null;
+        try {
+            request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+        } catch (Exception ignored) {
+        }
+        return request;
+    }
+
+    /**
+     * 依赖spring框架获取HttpServletRequest
+     *
+     * @return HttpServletRequest
+     */
+    public static Optional<HttpServletRequest> getOptionalRequest() {
+        HttpServletRequest request = null;
+        try {
+            request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+        } catch (Exception ignored) {
+        }
+        return Optional.ofNullable(request);
+    }
+
+    /**
+     * 依赖spring框架获取HttpServletRequest
+     *
+     * @return HttpServletRequest
+     */
+    public static HttpServletResponse getResponse() {
+        HttpServletResponse response = null;
+        try {
+            response = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getResponse();
+        } catch (Exception ignored) {
+        }
+        return response;
+    }
+
+    /**
+     * ApplicationContext是否包含该Bean
+     *
+     * @param name
+     * @return
+     */
+    public static boolean containsBean(String name) {
+        return ApplicationContextRegister.getApplicationContext().containsBean(name);
+    }
+
+    /**
+     * ApplicationContext该Bean是否为单例
+     *
+     * @param name
+     * @return
+     */
+    public static boolean isSingleton(String name) {
+        return ApplicationContextRegister.getApplicationContext().isSingleton(name);
+    }
+
+    /**
+     * 获取该Bean的Class
+     *
+     * @param name
+     * @return
+     */
+    public static <T> Class<T> getType(String name) {
+        return (Class<T>) ApplicationContextRegister.getApplicationContext().getType(name);
+    }
+
+    /**
+     * 获取ServletContext
+     *
+     * @return
+     */
+    public static ServletContext getServletContext() {
+        return ((AnnotationConfigServletWebServerApplicationContext) ApplicationContextRegister.getApplicationContext()).getServletContext();
+    }
+
+}
