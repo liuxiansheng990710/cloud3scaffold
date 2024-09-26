@@ -15,13 +15,7 @@ allprojects {
 
     //控制台能够正确输出中文字符
     tasks.withType(JavaExec) {
-        jvmArgs '-Dfile.encoding=UTF-8'
-    }
-
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
+        jvmArgs = ['-Dfile.encoding=UTF-8', '-Dsun.stdout.encoding=UTF-8', '-Dsun.stderr.encoding=UTF-8']
     }
 
 }
@@ -31,8 +25,10 @@ subprojects { subproject ->
     apply {
         plugin("java-library")
         plugin("io.spring.dependency-management")
-        plugin("org.springframework.boot")
     }
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 
     dependencies {
         implementation platform(libs.spring.boot)

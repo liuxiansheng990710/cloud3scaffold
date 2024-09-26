@@ -10,3 +10,20 @@
 ### - Could not find method api() for arguments... 
 这是因为api引入依赖的方式是java-library插件中的方法，而非java插件的 [官方文档](https://docs.gradle.org/current/userguide/java_library_plugin.html)
 - 解决方式：id 'java-library'
+
+### - 构建乱码
+
+- File -> Settings -> Editor -> File Encodings
+  - Global Encoding、Project Encoding、Properties Files都选择**UTF-8**
+  
+- Help -> Edit Custom VM Option
+  - 追加 -Dfile.encoding=UTF-8 到文档末尾 重启idea生效
+  
+  
+### - compileJava命令报错
+
+- Could not resolve org.springframework.boot:spring-boot-gradle-plugin:3.3.4
+- 无效的源发行版: 17
+  - 这是两个问题都是因为Java版本与gradle所需构建版本不一致导致
+  - File -> setting -> build tools -> gradle 设置sdk版本
+  - 查看本地环境变量是否配置了java环境
