@@ -8,3 +8,8 @@
 - [x] gradle 7 之后推荐该用法
 - [x] 简化 build.gradle 文件
 - [x] 父模块定义dependencies 规范 子模块共享依赖版本
+
+
+## web配置
+
+### [undertow](./commons/commons-web/src/main/java/com/example/commons/web/undertow/UndertowServerFactoryCustomizer.java)
