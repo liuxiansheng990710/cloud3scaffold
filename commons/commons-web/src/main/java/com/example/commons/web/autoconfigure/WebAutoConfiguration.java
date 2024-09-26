@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.example.commons.web.undertow.UndertowServerFactoryCustomizer;
+import com.example.commons.web.servlet.undertow.UndertowServerFactoryCustomizer;
 
 import io.undertow.Undertow;
 
