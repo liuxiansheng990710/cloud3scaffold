@@ -1,4 +1,4 @@
-package com.example.commons.web.undertow;
+package com.example.commons.web.servlet.undertow;
 
 import java.io.IOException;
 

@@ -1,6 +1,7 @@
 dependencies {
     //boot相关依赖
     api "org.springframework.boot:spring-boot-starter"
+    api "org.springframework.boot:spring-boot-starter-validation"
 
     //工具类依赖
     api libs.log4j2
