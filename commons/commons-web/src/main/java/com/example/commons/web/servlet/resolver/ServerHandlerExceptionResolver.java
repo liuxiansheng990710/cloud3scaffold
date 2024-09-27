@@ -6,7 +6,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
 
-import com.example.commons.web.servlet.exceptions.ExceptionEnum;
+import com.example.commons.web.servlet.exceptions.enums.ExceptionEnum;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

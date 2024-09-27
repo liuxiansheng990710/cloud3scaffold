@@ -17,10 +17,12 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver;
 
 import com.example.commons.core.utils.JacksonUtils;
+import com.example.commons.web.servlet.interceptors.ApiInterceptor;
 import com.example.commons.web.servlet.resolver.ServerHandlerExceptionResolver;
 import com.example.commons.web.servlet.undertow.UndertowServerFactoryCustomizer;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -73,6 +75,16 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
         resolvers.removeIf(DefaultHandlerExceptionResolver.class::isInstance);
         resolvers.add(new ServerHandlerExceptionResolver());
+    }
+
+    /**
+     * 拦截器
+     *
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new ApiInterceptor()).addPathPatterns("/**").excludePathPatterns("/error");
     }
 
     /**
