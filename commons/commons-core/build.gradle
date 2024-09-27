@@ -1,6 +1,7 @@
 dependencies {
     //boot相关依赖
     api "org.springframework.boot:spring-boot-starter"
+    api "org.springframework.boot:spring-boot-starter-validation"
 
     //工具类依赖
     api libs.log4j2
@@ -12,5 +13,7 @@ dependencies {
     api libs.google.guava
     api libs.commons.lang3
     api libs.lombok
+    //异步日志打印驱动
+    api libs.disruptor
     annotationProcessor libs.lombok
 }
