@@ -58,7 +58,7 @@ cloud3scaffold
 
 ### [全局异常处理](./commons/commons-web/src/main/java/com/example/commons/web/servlet/resolver/ServerHandlerExceptionResolver.java)
 
-### web日志全局配置
+### web日志全局配置 [使用示例](./sample/log/LOG.md)
 
 - [正常请求日志](./commons/commons-web/src/main/java/com/example/commons/web/servlet/response/CommonsControllerAdvice.java)
 - [错误请求日志](./commons/commons-web/src/main/java/com/example/commons/web/servlet/resolver/GlobalExceptionHandler.java)
