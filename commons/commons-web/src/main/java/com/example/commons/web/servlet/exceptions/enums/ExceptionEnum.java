@@ -1,4 +1,4 @@
-package com.example.commons.web.servlet.exceptions;
+package com.example.commons.web.servlet.exceptions.enums;
 
 import static com.example.commons.web.servlet.enums.WebGlobaErr.x2000;
 import static com.example.commons.web.servlet.enums.WebGlobaErr.x2001;
@@ -38,9 +38,10 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.alibaba.fastjson2.JSONException;
-import com.example.commons.core.exceptions.ApiException;
 import com.example.commons.core.exceptions.CommonUtilsException;
+import com.example.commons.core.exceptions.ApiException;
 import com.example.commons.core.exceptions.ServerException;
+import com.example.commons.web.servlet.resolver.GlobalExceptionHandler;
 import com.example.commons.web.utils.ResponseUtils;
 
 import jakarta.servlet.http.HttpServletRequest;

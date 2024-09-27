@@ -13,5 +13,7 @@ dependencies {
     api libs.google.guava
     api libs.commons.lang3
     api libs.lombok
+    //异步日志打印驱动
+    api libs.disruptor
     annotationProcessor libs.lombok
 }

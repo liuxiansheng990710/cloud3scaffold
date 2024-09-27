@@ -11,6 +11,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.example.commons.core.exceptions.CommonUtilsException;
 import com.example.commons.core.utils.ApplicationContextRegister;
+import com.example.commons.web.servlet.enums.ServerEnvironment;
+import com.example.commons.web.servlet.enums.Servers;
+import com.example.commons.web.servlet.model.ServerMetaData;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,6 +32,11 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ApplicationUtils {
+
+    /**
+     * 服务器元数据
+     */
+    private static final ServerMetaData SERVER_META_DATA = ServerMetaData.getMetaData();
 
     /**
      * 获取spring Environment
@@ -201,4 +209,39 @@ public class ApplicationUtils {
         return ((AnnotationConfigServletWebServerApplicationContext) ApplicationContextRegister.getApplicationContext()).getServletContext();
     }
 
+    /**
+     * 获取ServerMetaData
+     *
+     * @return
+     */
+    public static ServerMetaData getMetaData() {
+        return SERVER_META_DATA;
+    }
+
+    /**
+     * 获取web_server_path
+     *
+     * @return
+     */
+    public static String getWebServerPath() {
+        return SERVER_META_DATA.getServers().path();
+    }
+
+    /**
+     * 获取web_servers
+     *
+     * @return
+     */
+    public static Servers getWebServers() {
+        return SERVER_META_DATA.getServers();
+    }
+
+    /**
+     * 获取运行环境
+     *
+     * @return
+     */
+    public static ServerEnvironment getEnvironment() {
+        return SERVER_META_DATA.getServerEnvironment();
+    }
 }

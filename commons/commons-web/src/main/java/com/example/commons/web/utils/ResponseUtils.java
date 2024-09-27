@@ -3,6 +3,7 @@ package com.example.commons.web.utils;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 
+import com.example.commons.core.log.models.RequestLogger;
 import com.example.commons.core.model.Errors;
 import com.example.commons.core.model.Responses;
 import com.example.commons.core.utils.TypeUtils;
+import com.example.commons.web.servlet.cons.RequestCons;
 import com.example.commons.web.servlet.response.ResponseWrapper;
 import com.google.common.base.Throwables;
 
@@ -195,11 +198,40 @@ public class ResponseUtils {
      * @param result
      */
     public static void responseAndPrint(HttpServletRequest request, HttpServletResponse response, Object result) {
+        RequestLogger requestLogger = getRequestLogger(request, result);
+        RequestLogger.print(response.getStatus(), RequestLogger.LOG_PREFIX + requestLogger);
         //响应Json格式
         if (response instanceof ResponseWrapper) {
             ((ResponseWrapper) response).writeValueAsJson(result);
         }
 
+    }
+
+    /**
+     * 获取请求日志参数体
+     *
+     * @param request
+     * @param result
+     * @return
+     */
+    public static RequestLogger getRequestLogger(HttpServletRequest request, Object result) {
+        Long beiginTime = (Long) request.getAttribute(RequestCons.REQ_BEGIN_TIME);
+        Long endTime = System.currentTimeMillis();
+
+        RequestLogger logger = new RequestLogger();
+        logger.setParameterMap(request.getParameterMap())
+                .setStartTime(TypeUtils.castToDate(request.getAttribute(RequestCons.REQ_BEGIN_TIME)))
+                .setRequestBody(request.getAttribute(RequestCons.REQ_BODY))
+                .setUrl((String) request.getAttribute(RequestCons.REQ_URL))
+                .setMapping((String) request.getAttribute(RequestCons.REQ_MAPPING))
+                .setMethod((String) request.getAttribute(RequestCons.REQ_METHOD))
+                .setData(result)
+                .setIp(Optional.ofNullable(request.getHeader(RequestCons.REQ_X_REAL_IP)).orElse(IpUtils.getIpAddr(request)))
+                .setRunTime((Objects.isNull(beiginTime) ? 0 : endTime - beiginTime) + "ms")
+                .setOrigin((String) request.getAttribute(RequestCons.REQ_SERVER_NAME))
+                .setEnvironment((String) request.getAttribute(RequestCons.REQ_ENVIRONMENT))
+        ;
+        return logger;
     }
 
 }

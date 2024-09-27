@@ -1,4 +1,4 @@
-package com.example.commons.web.servlet.exceptions;
+package com.example.commons.web.servlet.resolver;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
