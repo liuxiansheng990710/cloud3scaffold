@@ -33,10 +33,9 @@ public class test {
 @RestController
 public class test {
 
-    @Wrapper(httpStatus = HttpStatus.ACCEPTED)
-    @GetMapping("/v1")
-    public CustomResponse test() {
-        return new CustomResponse();
+    @Wrapper(wrapper = true, httpStatus = HttpStatus.ACCEPTED)
+    public List<String> test() {
+        return Lists.newArrayList("21", "666");
     }
 }
 ```
