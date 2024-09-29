@@ -1,0 +1,11 @@
+dependencies {
+    implementation project(":commons:commons-core")
+
+    implementation libs.commons.text
+    annotationProcessor libs.lombok
+
+    //@ConfigurationProperties需要该注解
+    implementation  "org.springframework.boot:spring-boot-configuration-processor"
+
+    api "org.springframework.boot:spring-boot-starter-data-mongodb"
+}

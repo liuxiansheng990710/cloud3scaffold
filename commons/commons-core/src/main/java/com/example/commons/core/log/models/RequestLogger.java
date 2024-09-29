@@ -61,10 +61,6 @@ public class RequestLogger extends SuperLogger {
      * IP地址
      */
     private String ip;
-    /**
-     * 运行时间 单位:ms
-     */
-    private String runTime;
 
     /**
      * @param status

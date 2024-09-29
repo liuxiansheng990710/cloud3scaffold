@@ -8,6 +8,7 @@ fastjson2 = "2.0.52"
 hutool = "5.8.27"
 google-guava = "33.2.1-jre"
 commons-lang3 = "3.14.0"
+commons-text = "1.12.0"
 lombok = "1.18.32"
 disruptor = "3.4.4"
 
@@ -27,6 +28,7 @@ fastjson2 = { module = "com.alibaba.fastjson2:fastjson2", version.ref = "fastjso
 hutool = { module = "cn.hutool:hutool-all", version.ref = "hutool" }
 google-guava = { module = "com.google.guava:guava", version.ref = "google-guava" }
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
+commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 #异步打印日志所需驱动类
 disruptor = { module = "com.lmax:disruptor", version.ref = "disruptor" }
