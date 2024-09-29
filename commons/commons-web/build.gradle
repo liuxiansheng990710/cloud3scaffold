@@ -1,5 +1,5 @@
 dependencies {
-    compileOnly project(":commons:commons-core")
+    implementation project(":commons:commons-core")
 
     api "org.springframework.boot:spring-boot-starter-web"
     api "org.springframework.boot:spring-boot-starter-undertow"

@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "spring.data.mongodb.custom",
+      "type": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.data.mongodb.custom.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mongo 自定义配置",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.data.mongodb.custom.keyFillCallback",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mongo id自动填充配置",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.data.mongodb.custom.auditorAware",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mongo 操作人信息自动填充",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.data.mongodb.custom.convert",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mongo 自动转换",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.data.mongodb.custom.log",
+      "type": "使用启用mongo 自定义日志",
+      "description": "是否启用mongo 自定义配置",
+      "sourceType": "com.example.mongo.provider.stater.properties.MongoConfigProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}
