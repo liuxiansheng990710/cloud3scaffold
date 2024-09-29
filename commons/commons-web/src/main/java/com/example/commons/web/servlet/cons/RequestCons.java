@@ -18,5 +18,6 @@ public class RequestCons {
     public static final String REQ_X_REAL_IP = "X-Real-IP";
     public static final String REQ_ENVIRONMENT = "ENVIRONMENT";
     public static final String REQ_SERVER_NAME = "SERVER_NAME";
+    public static final String REQ_IP = "REQ_IP";
 
 }

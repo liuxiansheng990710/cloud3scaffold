@@ -15,6 +15,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 
+import com.example.commons.core.enums.LogEnum;
 import com.example.commons.core.log.models.RequestLogger;
 import com.example.commons.core.model.Errors;
 import com.example.commons.core.model.Responses;
@@ -227,6 +228,7 @@ public class ResponseUtils {
                 .setMethod((String) request.getAttribute(RequestCons.REQ_METHOD))
                 .setData(result)
                 .setIp(Optional.ofNullable(request.getHeader(RequestCons.REQ_X_REAL_IP)).orElse(IpUtils.getIpAddr(request)))
+                .setType(LogEnum.REQUEST)
                 .setRunTime((Objects.isNull(beiginTime) ? 0 : endTime - beiginTime) + "ms")
                 .setOrigin((String) request.getAttribute(RequestCons.REQ_SERVER_NAME))
                 .setEnvironment((String) request.getAttribute(RequestCons.REQ_ENVIRONMENT))

@@ -2,6 +2,7 @@ package com.example.commons.core.log.models;
 
 import java.io.Serializable;
 
+import com.example.commons.core.enums.LogEnum;
 import com.example.commons.core.utils.JacksonUtils;
 
 import lombok.EqualsAndHashCode;
@@ -24,6 +25,14 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class SuperLogger implements Serializable {
 
+    /**
+     * 日志类型
+     */
+    private LogEnum type;
+    /**
+     * 运行时间 单位:ms
+     */
+    private String runTime;
     /**
      * 来源
      */
