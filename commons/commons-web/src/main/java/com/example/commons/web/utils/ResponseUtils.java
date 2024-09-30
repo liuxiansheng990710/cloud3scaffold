@@ -16,7 +16,7 @@ import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 
 import com.example.commons.core.enums.LogEnum;
-import com.example.commons.core.log.models.RequestLogger;
+import com.example.commons.core.model.log.RequestLogger;
 import com.example.commons.core.model.Errors;
 import com.example.commons.core.model.Responses;
 import com.example.commons.core.utils.TypeUtils;

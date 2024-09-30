@@ -22,6 +22,10 @@
 | [gradle](./DESC.md#gradle)  | 8.8        |
 | Spring Boot                 | 3.3.4      |
 
+### 支持
+
+- [x] 日志（链路追踪、请求日志、mongo、mySql、pgSql、mq）
+
 ### 模块说明
 
 ```

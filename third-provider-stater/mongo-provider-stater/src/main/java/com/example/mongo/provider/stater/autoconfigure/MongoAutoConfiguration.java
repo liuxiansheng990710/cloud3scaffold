@@ -1,4 +1,4 @@
-package com.example.mongo.provider.stater.configure;
+package com.example.mongo.provider.stater.autoconfigure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,8 @@ import com.mongodb.ConnectionString;
 @Configuration
 @ConditionalOnClass(MongoTemplate.class)
 @EnableConfigurationProperties(MongoConfigProperties.class)
-@ConditionalOnProperty(prefix = MongoConfigProperties.MONGO_CONFIG_PROPERTIES, name = "enable")
+//matchIfMissing：如果配置文件没有添加该配置是否加载bean 配置为true，因为如果没配置的话，可以默认是开启
+@ConditionalOnProperty(name = MongoConfigProperties.MONGO_CONFIG_PROPERTIES + ".enable", matchIfMissing = true)
 public class MongoAutoConfiguration {
 
     /**
@@ -47,7 +48,7 @@ public class MongoAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnProperty(prefix = MongoConfigProperties.MONGO_CONFIG_PROPERTIES, name = "keyFillCallback")
+    @ConditionalOnProperty(name = MongoConfigProperties.MONGO_CONFIG_PROPERTIES + ".keyFillCallback", matchIfMissing = true)
     public MongoCompositeKeyFillCallback mongoCompositeKeyFillListener() {
         return new MongoCompositeKeyFillCallback();
     }
@@ -58,7 +59,7 @@ public class MongoAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnProperty(prefix = MongoConfigProperties.MONGO_CONFIG_PROPERTIES, name = "auditorAware")
+    @ConditionalOnProperty(name = MongoConfigProperties.MONGO_CONFIG_PROPERTIES + ".auditorAware", matchIfMissing = true)
     public MongoOperatorAuditorAware operatorAuditorAware() {
         return new MongoOperatorAuditorAware();
     }
@@ -67,7 +68,7 @@ public class MongoAutoConfiguration {
      * mongo 类型转换器
      */
     @Bean
-    @ConditionalOnProperty(prefix = MongoConfigProperties.MONGO_CONFIG_PROPERTIES, name = "convert")
+    @ConditionalOnProperty(name = MongoConfigProperties.MONGO_CONFIG_PROPERTIES + ".convert", matchIfMissing = true)
     public MappingMongoConverter mappingMongoConverter(MongoDatabaseFactory factory, MongoMappingContext context) {
         DbRefResolver dbRefResolver = new DefaultDbRefResolver(factory);
         MappingMongoConverter mappingConverter = new MappingMongoConverter(dbRefResolver, context);
@@ -88,7 +89,7 @@ public class MongoAutoConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnProperty(prefix = MongoConfigProperties.MONGO_CONFIG_PROPERTIES, name = "log")
+    @ConditionalOnProperty(name = MongoConfigProperties.MONGO_CONFIG_PROPERTIES + ".log", matchIfMissing = true)
     public MongoMetricsFactoryBean mongoLogFactoryBean(MongoProperties properties) {
         MongoMetricsFactoryBean mongoLogFactoryBean = new MongoMetricsFactoryBean();
         mongoLogFactoryBean.setConnectionString(new ConnectionString(properties.getUri()));
