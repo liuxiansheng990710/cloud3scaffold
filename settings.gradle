@@ -47,4 +47,10 @@ include 'commons:commons-web'
 findProject('commons:commons-web')?.name = 'commons-web'
 include 'commons:commons-core'
 findProject(':commons:commons-core')?.name = 'commons-core'
+//-----------------------------------------------第三方组件---------------------------------------------------------//
+include 'third-provider-stater'
+include 'third-provider-stater:mongo-provider-stater'
+findProject(':third-provider-stater:mongo-provider-stater')?.name = 'mongo-provider-stater'
+include 'third-provider-stater:mysql-provider-stater'
+findProject(':third-provider-stater:mysql-provider-stater')?.name = 'mysql-provider-stater'
 

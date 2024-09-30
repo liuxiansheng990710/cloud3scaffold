@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(":commons:commons-core")
+
+    api libs.mysql.connector
+    //mysql日志打印
+    api libs.p6spy
+    api libs.mybatis.plus
+
+    annotationProcessor libs.lombok
+}

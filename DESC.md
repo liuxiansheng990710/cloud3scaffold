@@ -14,6 +14,8 @@
     - [时间类型转换](#时间类型转换)
     - [日志配置](#日志配置)
     - [公共方法封装](#公共方法封装)
+- [mysql配置](#mysql)
+    - [日志打印](#日志配置)
 
 # 项目说明
 
@@ -127,5 +129,19 @@ cloud3scaffold
 ### [公共方法封装](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/service)
 
 > 使用示例详见[示例](./sample/mongo/PUBLIC.md)
+
+</details>
+
+# mysql
+
+<details open>
+<summary> 点击展开/折叠 mongo相关项目描述 </summary>
+
+## [日志配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/p6spy)
+
+- 基于 **p6spy** 实现 使用时详见[配置示例](./sample/mysql/CONFIG.md)
+
+
+
 
 </details>
