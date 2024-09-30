@@ -16,6 +16,7 @@
     - [公共方法封装](#公共方法封装)
 - [mysql配置](#mysql)
     - [日志打印](#日志配置)
+    - [公共方法封装](#公共方法封装)
 
 # 项目说明
 
@@ -49,6 +50,11 @@ cloud3scaffold
             ├── metrics -- mongo监控
             ├── properties -- mongo自定义配置
             ├── service/model -- mongo公共方法封装
+     ├── mysql-provider-stater -- mysql支持配置
+            ├── mp -- mybatis-plus自定义配置
+                  ├── model -- 公共实体
+                  ├── service -- 公共方法
+            ├── p6spy -- mysql日志打印
 ```
 
 </details>
@@ -141,7 +147,9 @@ cloud3scaffold
 
 - 基于 **p6spy** 实现 使用时详见[配置示例](./sample/mysql/CONFIG.md)
 
+## 公共方法封装
 
+- 基于mp 优化部分方法 详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
 
 
 </details>
