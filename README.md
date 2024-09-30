@@ -24,7 +24,7 @@
 
 ### 支持
 
-- [x] 日志（链路追踪、请求日志、mongo、mySql、pgSql、mq）
+- [x] 日志（链路追踪、请求日志、mongo、mySql、pgSql、mq、okhttp3）
 
 ### 模块说明
 

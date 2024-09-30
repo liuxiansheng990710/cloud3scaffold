@@ -11,6 +11,9 @@ commons-lang3 = "3.14.0"
 commons-text = "1.12.0"
 lombok = "1.18.32"
 disruptor = "3.4.4"
+p6spy = "3.9.1"
+mybatis-plus = "3.5.7"
+mysql-connector = "8.0.33"
 
 [libraries]
 ##------------------------------------------------------boot依赖----------------------------------------------------------##
@@ -30,8 +33,15 @@ google-guava = { module = "com.google.guava:guava", version.ref = "google-guava"
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+
+##------------------------------------------------------第三方依赖----------------------------------------------------------##
 #异步打印日志所需驱动类
 disruptor = { module = "com.lmax:disruptor", version.ref = "disruptor" }
+#mysql日志打印所需
+p6spy = { module = "p6spy:p6spy", version.ref = "p6spy" }
+mybatis-plus = { module = "com.baomidou:mybatis-plus-spring-boot3-starter", version.ref = "mybatis-plus" }
+mysql-connector = { module = "mysql:mysql-connector-java", version.ref = "mysql-connector" }
+
 
 [plugins]
 #spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }

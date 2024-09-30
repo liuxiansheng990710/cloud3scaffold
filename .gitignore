@@ -157,6 +157,7 @@ logs
 build
 .gradle
 out
+spy.log
 #暂时将gradle上传至git 避免构建gradle版本不一致导致错误
 #gradle
 *.hprof

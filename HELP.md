@@ -1,6 +1,16 @@
 # 排雷专区
 
+## 目录
+
+- [gradle构建问题](#gradle构建问题)
+
+- [mysql相关问题](#mysql相关问题)
+
+
 ## gradle构建问题
+
+<details>
+<summary> 点击展开/折叠 gradle构建问题 </summary>
 
 ### - Problem: In version catalog libs, you can only call the 'from' method a single time
 这里在首次构建失败后再次构件时，可能在setting.gradle会出现该报错
@@ -27,3 +37,18 @@
   - 这是两个问题都是因为Java版本与gradle所需构建版本不一致导致
   - File -> setting -> build tools -> gradle 设置sdk版本
   - 查看本地环境变量是否配置了java环境
+
+</details>
+
+## mysql相关问题
+
+<details open>
+<summary> 点击展开/折叠 项目说明 </summary>
+
+### - Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+
+结合p6spy使用的时候，如果是mysql8.x 则需要使用com.mysql.cj.jdbc.Driver，所以在spy.properties文件中，修改**driverlist**
+
+
+
+</details>
