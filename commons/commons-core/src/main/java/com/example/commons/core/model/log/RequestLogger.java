@@ -1,4 +1,4 @@
-package com.example.commons.core.log.models;
+package com.example.commons.core.model.log;
 
 import java.util.Date;
 import java.util.Map;

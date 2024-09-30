@@ -10,7 +10,7 @@ import org.bson.BsonArray;
 import org.bson.BsonDocument;
 
 import com.example.commons.core.enums.LogEnum;
-import com.example.commons.core.log.models.MongoLog;
+import com.example.commons.core.model.log.MongoLog;
 import com.example.commons.core.utils.JacksonUtils;
 import com.google.common.collect.Sets;
 import com.mongodb.event.CommandListener;
