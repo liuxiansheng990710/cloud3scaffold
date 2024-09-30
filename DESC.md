@@ -1,20 +1,35 @@
-# 项目相关描述
+# 目录
 
-## 项目说明
+- [项目说明](#项目说明)
+- [gradle](#gradle)
+    - [统一依赖管理](#统一依赖管理)
+- [web配置](#web)
+    - [undertow](#undertow)
+    - [全局响应处理](#全局响应处理)
+    - [全局异常处理](#全局异常处理)
+    - [web日志全局配置](#web日志全局配置)
+- [mongo配置](#mongo)
+    - [id自动填充](#id自动填充)
+    - [操作人信息自动填充](#操作人信息自动填充)
+    - [时间类型转换](#时间类型转换)
+    - [日志配置](#日志配置)
+    - [公共方法封装](#公共方法封装)
+
+# 项目说明
+
+<details open>
+<summary> 点击展开/折叠 项目说明 </summary>
 
 ```
 cloud3scaffold
 └── commons -- 系统公共模块
      ├── commons-core -- 公共配置/依赖包
             ├── exceptions -- 公共异常
-            ├── log -- 日志配置
-                 ├── mysql -- mysql日志
-                 ├── mongo -- mongo日志
-                 ├── mq -- mq日志
-            ├── model -- 公共实体
+            ├── model -- 公共实体包
             ├── utils -- 工具类
+                  ├── config -- 特定工具类配置
             ├── resources/log4j2-local.xml -- 全局日志输出配置
-     ├── commons-web -- web配置包
+     ├── commons-web -- web配置模块
             ├── autoconfigure -- web自动装配
             ├── servlet -- web servlet配置
                   ├── resolver -- web异常全局处理（包括异常日志）
@@ -25,12 +40,23 @@ cloud3scaffold
             ├── runner -- 启动日志配置类
             ├── utils -- 工具类 
 
-
+└── third-provder-stater -- 第三方支持模块
+     ├── mongo-provider-stater -- mongo支持配置
+            ├── autoconfigure -- mongo自动装配
+            ├── config -- mongo配置（类型转换/自动填充）
+            ├── metrics -- mongo监控
+            ├── properties -- mongo自定义配置
+            ├── service/model -- mongo公共方法封装
 ```
 
-## gradle
+</details>
 
-### 统一依赖管理
+# gradle
+
+<details open>
+<summary> 点击展开/折叠 gradle相关项目描述 </summary>
+
+## 统一依赖管理
 
 基于 [gradle catalog](https://docs.gradle.org/current/userguide/platforms.html) 中的TOML方式实现,
 本项目使用groovy方式实现，如需替换为kotlin可参考[gradle kotlin 依赖管理](https://blog.csdn.net/qq_36279799/article/details/131983818)
@@ -39,26 +65,67 @@ cloud3scaffold
 - [x] 简化 build.gradle 文件
 - [x] 父模块定义dependencies 规范 子模块共享依赖版本
 
-## web配置
+</details>
 
-### [undertow](./commons/commons-web/src/main/java/com/example/commons/web/servlet/undertow/UndertowServerFactoryCustomizer.java)
+# web
 
-### [全局响应处理](./commons/commons-web/src/main/java/com/example/commons/web/servlet/response/CommonsControllerAdvice.java)
+<details open>
+<summary> 点击展开/折叠 web相关项目描述 </summary>
 
+## [undertow](./commons/commons-web/src/main/java/com/example/commons/web/servlet/undertow/UndertowServerFactoryCustomizer.java)
+
+## [全局响应处理](./commons/commons-web/src/main/java/com/example/commons/web/servlet/response/CommonsControllerAdvice.java)
+
+- 响应状态码与http状态码一致
 - 如需修改请对@RestControllerAdvice()包路径进行修改
 - [Wrapper注解](./commons/commons-web/src/main/java/com/example/commons/web/servlet/response/Wrapper.java)
-  辅助使用（仅限于类方法上使用） [示例](./sample/response/RESPONSE.md)
+  辅助使用（仅限于类方法上使用）
     - 自定义返回类型：如果不需要对返回结果进行[统一包装](./commons/commons-core/src/main/java/com/example/commons/core/model/Responses.java)处理
       可添加该注解，在返回时则不进行二次包装
     - 自定义返回http状态码：可对httpStatus字段赋值
+  > [示例](./sample/response/RESPONSE.md)
 
-- String类型返回值 [示例](./sample/response/RESPONSE.md)
+- String类型返回值
     - 请使用[统一返回工具类](./commons/commons-web/src/main/java/com/example/commons/web/utils/ResponseUtils.java)中的success(String
       object)方法进行返回
+  > [示例](./sample/response/RESPONSE.md)
 
-### [全局异常处理](./commons/commons-web/src/main/java/com/example/commons/web/servlet/resolver/ServerHandlerExceptionResolver.java)
+## [全局异常处理](./commons/commons-web/src/main/java/com/example/commons/web/servlet/resolver/ServerHandlerExceptionResolver.java)
 
-### web日志全局配置 [使用示例](./sample/log/LOG.md)
+## web日志全局配置
+
+> [使用示例](./sample/log/LOG.md)
 
 - [正常请求日志](./commons/commons-web/src/main/java/com/example/commons/web/servlet/response/CommonsControllerAdvice.java)
 - [错误请求日志](./commons/commons-web/src/main/java/com/example/commons/web/servlet/resolver/GlobalExceptionHandler.java)
+
+</details>
+
+# mongo
+
+<details open>
+<summary> 点击展开/折叠 mongo相关项目描述 </summary>
+
+## [自定义配置](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/properties/MongoConfigProperties.java)
+
+> 默认开启下面五个配置，如需关闭，请查看[关闭示例](./sample/mongo/PRO.md)
+
+- 注意：自动填充时需要在启动类上添加 **@EnableMongoAuditing** 注解
+
+### [id自动填充](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/config/MongoCompositeKeyFillCallback.java)
+
+> 使用示例详见[示例](./sample/mongo/AUTO.md)
+
+### [操作人信息自动填充](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/config/MongoOperatorAuditorAware.java)
+
+> 使用示例详见[示例](./sample/mongo/AUTO.md)
+
+### [时间类型转换](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/config/DateToMongoDateConvert.java)
+
+### [日志配置](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/metrics/MongoMetricsListener.java)
+
+### [公共方法封装](./third-provider-stater/mongo-provider-stater/src/main/java/com/example/mongo/provider/stater/service)
+
+> 使用示例详见[示例](./sample/mongo/PUBLIC.md)
+
+</details>

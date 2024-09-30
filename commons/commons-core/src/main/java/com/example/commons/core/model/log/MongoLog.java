@@ -1,4 +1,4 @@
-package com.example.commons.core.log.models;
+package com.example.commons.core.model.log;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
