@@ -244,4 +244,8 @@ public class ApplicationUtils {
     public static ServerEnvironment getEnvironment() {
         return SERVER_META_DATA.getServerEnvironment();
     }
+
+    public static String getPort() {
+        return getSpringEnvironment().getProperty("server.port");
+    }
 }
