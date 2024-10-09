@@ -1,0 +1,61 @@
+{
+  "groups": [
+    {
+      "name": "mybatis-plus.custom",
+      "type": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "mybatis-plus.custom.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 自定义配置",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.id",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus id自动填充配置",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.auditorAware",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 操作人信息自动填充",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.interceptor",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 自定义拦截器配置",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.log",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 自定义配置",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.page",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 分页转换",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "mybatis-plus.custom.data",
+      "type": "java.lang.Boolean",
+      "description": "是否启用mybatis-plus 数据库检测",
+      "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}

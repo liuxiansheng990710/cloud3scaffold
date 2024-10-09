@@ -31,7 +31,7 @@ public class MongoConfigProperties {
     private boolean convert = true;
 
     /**
-     * 使用启用mongo 自定义日志
+     * 是否启用mongo 自定义日志
      */
     private boolean log = true;
 
