@@ -97,7 +97,9 @@ public abstract class SuperController {
     }
 
     /**
-     * 分页返回
+     * 分页返回（将源分页对象转换为统一分页返回类型）
+     * mp使用示例 {@link /sample/mysql/PAGE.md}
+     * mongo使用示例 {@link /sample/mongo/PAGE.md}
      *
      * @param sourcePage 源分页对象
      * @param clazz      分页目标类型（显示传递，为了标明 @param T 的类型）
@@ -109,6 +111,19 @@ public abstract class SuperController {
             return new Pages<>();
         }
         return converter.convert(sourcePage);
+    }
+
+    /**
+     * 获取默认分页模型
+     * mp使用示例 {@link /sample/mysql/PAGE.md}
+     * mongo使用示例 {@link /sample/mongo/PAGE.md}
+     *
+     * @param page 所需分页模型类
+     * @return
+     */
+    protected <S, T> T defaultPage(Class<T> page) {
+        Pages.PageConverter<S, T> converter = (Pages.PageConverter<S, T>) converterFactory.getConverter(page);
+        return (T) converter.defaultPage();
     }
 
 }

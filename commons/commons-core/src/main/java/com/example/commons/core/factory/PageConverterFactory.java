@@ -13,7 +13,7 @@ import com.example.commons.core.model.Pages;
 
 /**
  * <p>
- * 日志转换工厂类
+ * 分页转换工厂类
  * </p>
  *
  * @author : 21

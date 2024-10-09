@@ -24,4 +24,9 @@ public class MyBatisPlustPageConverter<T> implements Pages.PageConverter<Page<T>
                 MyBatisPlusPageStructConvert.INSTANCE.mybatisPlusPageToPages(page);
     }
 
+    @Override
+    public Page<T> defaultPage() {
+        return new Page<>(1, 20, true);
+    }
+
 }

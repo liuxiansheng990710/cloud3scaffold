@@ -21,4 +21,15 @@ public class MongoPageConverter<T> implements Pages.PageConverter<Page<T>, T> {
     public Pages<T> convert(Page<T> sourcePage) {
         return MongoPageStructConvert.INSTANCE.mongoPageToPagesWithTotal(sourcePage);
     }
+
+    /**
+     * 默认分页由PageRequest实现，所以这里返回空
+     * {@link MongoPageAbleConverter#defaultPage()}
+     *
+     * @return
+     */
+    @Override
+    public Page<T> defaultPage() {
+        return null;
+    }
 }
