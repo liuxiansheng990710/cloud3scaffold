@@ -5,6 +5,8 @@
     - [统一依赖管理](#统一依赖管理)
 - [web配置](#web)
     - [undertow](#undertow)
+    - [mvc序列化与反序列化全局配置](./commons/commons-web/src/main/java/com/example/commons/web/autoconfigure/WebAutoConfiguration.java)
+    - [请求参数转换及绑定](./commons/commons-web/src/main/java/com/example/commons/web/servlet/model/SuperController.java)
     - [全局响应处理](#全局响应处理)
     - [全局异常处理](#全局异常处理)
     - [web日志全局配置](#web日志全局配置)
