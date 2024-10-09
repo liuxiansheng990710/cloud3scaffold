@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.IllegalSQLInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.example.mysql.provider.stater.mp.injector.ColumnsCheckInjector;
 import com.example.mysql.provider.stater.mp.metahandler.CustomMetaObjectHandler;
 import com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties;
 
@@ -67,6 +68,12 @@ public class MyBatisPlustAutoConfiguration {
     @ConditionalOnProperty(name = MyBatisPlusConfigProperties.MP_CONFIG_PROPERTIES + ".auditorAware", matchIfMissing = true)
     public CustomMetaObjectHandler metaObjectHandler() {
         return new CustomMetaObjectHandler();
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = MyBatisPlusConfigProperties.MP_CONFIG_PROPERTIES + ".data", matchIfMissing = true)
+    public ColumnsCheckInjector columnsCheckInjector() {
+        return new ColumnsCheckInjector();
     }
 
 }

@@ -5,6 +5,7 @@ dependencies {
     //mysql日志打印
     api libs.p6spy
     api libs.mybatis.plus
+    api libs.mybatis.plus.dunamic
 
     annotationProcessor libs.lombok
     annotationProcessor libs.mapstruct.processor

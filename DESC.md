@@ -175,6 +175,17 @@ batis-plus:
 
 ## 数据库检查
 
+- 基于mybaits-plus实现，支持Mysql、PGsql，详见[数据库字段检查](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/injector/ColumnsCheckInjector.java)
+- 主要作用：检查代码字段与数据库字段是否一致，防止使用代码字段操作数据库字段时出现字段不存在问题
+- 防止代码上线，但是数据库sql未执行导致报错
+- **注意** ：该配置会增加项目启动时间，如需关闭请见关闭示例
+  ```yaml
+  # 关闭示例
+  batis-plus:
+    custom:
+      data: false
+  ```
+
 ## 拦截器
 
 - 基于mp 添加部分觉得不错的拦截器
