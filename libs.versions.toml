@@ -14,6 +14,8 @@ disruptor = "3.4.4"
 p6spy = "3.9.1"
 mybatis-plus = "3.5.7"
 mysql-connector = "8.0.33"
+mapstruct = "1.5.5.Final"
+mapstruct-binding = "0.2.0"
 
 [libraries]
 ##------------------------------------------------------boot依赖----------------------------------------------------------##
@@ -40,7 +42,11 @@ disruptor = { module = "com.lmax:disruptor", version.ref = "disruptor" }
 #mysql日志打印所需
 p6spy = { module = "p6spy:p6spy", version.ref = "p6spy" }
 mybatis-plus = { module = "com.baomidou:mybatis-plus-spring-boot3-starter", version.ref = "mybatis-plus" }
+#mysql连接驱动
 mysql-connector = { module = "mysql:mysql-connector-java", version.ref = "mysql-connector" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", version.ref = "mapstruct-binding" }
 
 
 [plugins]
