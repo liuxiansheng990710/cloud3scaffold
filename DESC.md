@@ -16,7 +16,11 @@
     - [公共方法封装](#公共方法封装)
 - [mysql配置](#mysql)
     - [日志打印](#日志配置)
-    - [公共方法封装](#公共方法封装)
+    - [数据库检查](#数据库检查)
+    - [mp公共方法封装](#公共方法封装)
+    - [mp拦截器](#拦截器)
+    - [mp自动填充](#自动填充)
+    - [mp自增Id](#id自增)
 
 # 项目说明
 
@@ -145,15 +149,49 @@ cloud3scaffold
 # mysql
 
 <details open>
-<summary> 点击展开/折叠 mongo相关项目描述 </summary>
+<summary> 点击展开/折叠 mysql相关项目描述 </summary>
 
-## [日志配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/p6spy)
+> 默认开启下面四个配置，如需关闭，请查看关闭示例
+ 
+```yaml
+# 全部关闭
+mybatis-plus:
+  custom:
+    enable: false
+```
 
-- 基于 **p6spy** 实现 使用时详见[配置示例](./sample/mysql/CONFIG.md)
+```yaml
+# 关闭某个（已自动填充为例）
+batis-plus:
+  custom:
+    auditorAware: false
+```
+
+## 日志配置
+
+- 基于 [**p6spy**](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/p6spy) 实现 使用时详见[配置示例](./sample/mysql/CONFIG.md)
+
+## 数据库检查
+
+## 拦截器
+
+- 基于mp 添加部分觉得不错的拦截器
+  - 分页插件拦截器
+  - 非法SQL拦截器
+  - 防止全表更新删除拦截器
+- 详见[mp拦截器配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
+
+## 自动填充
+- 基于mp 实现部分sql字段自动填充
+- 详见[mp自动填充配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
+
+## id自增
+- 基于mp 实现id自定义自增
+- 详见[mpid自增配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
 
 ## 公共方法封装
 
 - 基于mp 优化部分方法
-  详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
+  详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) 、 [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
 
 </details>
