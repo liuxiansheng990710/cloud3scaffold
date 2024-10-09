@@ -7,4 +7,6 @@ dependencies {
     api libs.mybatis.plus
 
     annotationProcessor libs.lombok
+    annotationProcessor libs.mapstruct.processor
+    annotationProcessor libs.mapstruct.binding
 }

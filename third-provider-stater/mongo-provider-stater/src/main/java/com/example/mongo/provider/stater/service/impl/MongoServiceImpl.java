@@ -1,12 +1,16 @@
 package com.example.mongo.provider.stater.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.UpdateDefinition;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.lang.Nullable;
 
 import com.example.mongo.provider.stater.service.MongoService;
@@ -89,6 +93,12 @@ public class MongoServiceImpl<T, ID, R extends MongoRepository<T, ID>> implement
     @Override
     public UpdateResult upsert(Query query, UpdateDefinition update, Class<?> entityClass) {
         return mongoTemplate.upsert(query, update, entityClass);
+    }
+
+    protected Page<T> wrapPage(Query query, Pageable pageable, Class<T> entityClass) {
+        long count = mongoTemplate.count(query, entityClass);
+        List<T> entities = mongoTemplate.find(query.with(pageable), entityClass);
+        return PageableExecutionUtils.getPage(entities, pageable, () -> count);
     }
 
     @Override

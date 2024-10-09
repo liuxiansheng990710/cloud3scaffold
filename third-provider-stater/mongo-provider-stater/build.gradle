@@ -3,6 +3,8 @@ dependencies {
 
     implementation libs.commons.text
     annotationProcessor libs.lombok
+    annotationProcessor libs.mapstruct.processor
+    annotationProcessor libs.mapstruct.binding
 
     //@ConfigurationProperties需要该注解
     implementation  "org.springframework.boot:spring-boot-configuration-processor"
