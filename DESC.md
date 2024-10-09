@@ -29,6 +29,7 @@ cloud3scaffold
      ├── commons-core -- 公共配置/依赖包
             ├── exceptions -- 公共异常
             ├── model -- 公共实体包
+            ├── factory -- 分页工厂
             ├── utils -- 工具类
                   ├── config -- 特定工具类配置
             ├── resources/log4j2-local.xml -- 全局日志输出配置
@@ -47,11 +48,14 @@ cloud3scaffold
      ├── mongo-provider-stater -- mongo支持配置
             ├── autoconfigure -- mongo自动装配
             ├── config -- mongo配置（类型转换/自动填充）
+            ├── convert -- mongo分页转换
             ├── metrics -- mongo监控
             ├── properties -- mongo自定义配置
             ├── service/model -- mongo公共方法封装
      ├── mysql-provider-stater -- mysql支持配置
             ├── mp -- mybatis-plus自定义配置
+                  ├── autoconfigure -- mp自动装配
+                  ├── convert -- mp分页转换
                   ├── model -- 公共实体
                   ├── service -- 公共方法
             ├── p6spy -- mysql日志打印
@@ -149,7 +153,7 @@ cloud3scaffold
 
 ## 公共方法封装
 
-- 基于mp 优化部分方法 详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
-
+- 基于mp 优化部分方法
+  详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
 
 </details>

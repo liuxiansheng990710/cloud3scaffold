@@ -70,7 +70,20 @@ public class Pages<T> implements Serializable {
      */
     public interface PageConverter<S, T> {
 
+        /**
+         * 源分页模型转换为统一分页模型
+         *
+         * @param sourcePage
+         * @return
+         */
         Pages<T> convert(S sourcePage);
+
+        /**
+         * 获取默认分页
+         *
+         * @return
+         */
+        S defaultPage();
 
     }
 
