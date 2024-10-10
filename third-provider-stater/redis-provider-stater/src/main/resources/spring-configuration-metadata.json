@@ -1,0 +1,61 @@
+{
+  "groups": [
+    {
+      "name": "redis.redisson.custom",
+      "type": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "redis.redisson.custom.enable",
+      "type": "java.lang.Boolean",
+      "description": "是否启用redisson自定义配置",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.client",
+      "type": "java.lang.Boolean",
+      "description": "是否启用自定义redisson客户端",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.manager",
+      "type": "java.lang.Boolean",
+      "description": "是否启用自定义redisson缓存管理器",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.interceptor",
+      "type": "java.lang.Boolean",
+      "description": "是否启用redisson 自定义拦截器配置",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.log",
+      "type": "java.lang.Boolean",
+      "description": "是否启用redisson 自定义配置",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.page",
+      "type": "java.lang.Boolean",
+      "description": "是否启用redisson 分页转换",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "redis.redisson.custom.data",
+      "type": "java.lang.Boolean",
+      "description": "是否启用redisson 数据库检测",
+      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
+      "defaultValue": true
+    }
+  ],
+  "hints": []
+}

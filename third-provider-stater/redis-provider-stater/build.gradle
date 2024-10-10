@@ -1,16 +1,11 @@
 dependencies {
     implementation project(":commons:commons-core")
 
-    api libs.mysql.connector
-    //mysql日志打印
-    api libs.p6spy
-    api libs.mybatis.plus
-    api libs.mybatis.plus.dunamic
-
     //@ConfigurationProperties需要该注解
     implementation  "org.springframework.boot:spring-boot-configuration-processor"
 
+    api libs.redisson
+
     annotationProcessor libs.lombok
-    annotationProcessor libs.mapstruct.processor
-    annotationProcessor libs.mapstruct.binding
+
 }

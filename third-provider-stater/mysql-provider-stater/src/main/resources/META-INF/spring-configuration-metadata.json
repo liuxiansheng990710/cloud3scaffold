@@ -38,7 +38,7 @@
     {
       "name": "mybatis-plus.custom.log",
       "type": "java.lang.Boolean",
-      "description": "是否启用mybatis-plus 自定义配置",
+      "description": "是否启用mybatis-plus 自定义日志配置",
       "sourceType": "com.example.mysql.provider.stater.mp.properties.MyBatisPlusConfigProperties",
       "defaultValue": true
     },

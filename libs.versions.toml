@@ -1,5 +1,5 @@
 [versions]
-##------------------------------------------------------boot版本----------------------------------------------------------##
+##------------------------------------------------------主要依赖版本----------------------------------------------------------##
 springboot = "3.3.4"
 ##------------------------------------------------------工具类版本----------------------------------------------------------##
 jackson = "2.17.2"
@@ -17,6 +17,7 @@ mysql-connector = "8.0.33"
 mapstruct = "1.5.5.Final"
 mapstruct-binding = "0.2.0"
 mybatis-plus-dunamic = "3.3.4"
+redisson = "3.35.0"
 
 [libraries]
 ##------------------------------------------------------boot依赖----------------------------------------------------------##
@@ -49,6 +50,7 @@ mysql-connector = { module = "mysql:mysql-connector-java", version.ref = "mysql-
 mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
 mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
 mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", version.ref = "mapstruct-binding" }
+redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
 
 
 [plugins]

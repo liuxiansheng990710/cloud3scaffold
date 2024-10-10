@@ -53,4 +53,6 @@ include 'third-provider-stater:mongo-provider-stater'
 findProject(':third-provider-stater:mongo-provider-stater')?.name = 'mongo-provider-stater'
 include 'third-provider-stater:mysql-provider-stater'
 findProject(':third-provider-stater:mysql-provider-stater')?.name = 'mysql-provider-stater'
+include 'third-provider-stater:redis-provider-stater'
+findProject(':third-provider-stater:redis-provider-stater')?.name = 'redis-provider-stater'
 
