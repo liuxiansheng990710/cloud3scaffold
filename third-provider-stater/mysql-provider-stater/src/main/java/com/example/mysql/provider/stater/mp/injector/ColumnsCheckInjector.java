@@ -25,21 +25,15 @@ import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.injector.AbstractMethod;
 import com.baomidou.mybatisplus.core.injector.AbstractSqlInjector;
 import com.baomidou.mybatisplus.core.injector.methods.Delete;
-import com.baomidou.mybatisplus.core.injector.methods.DeleteBatchByIds;
 import com.baomidou.mybatisplus.core.injector.methods.DeleteById;
 import com.baomidou.mybatisplus.core.injector.methods.DeleteByIds;
-import com.baomidou.mybatisplus.core.injector.methods.DeleteByMap;
 import com.baomidou.mybatisplus.core.injector.methods.Insert;
 import com.baomidou.mybatisplus.core.injector.methods.SelectBatchByIds;
 import com.baomidou.mybatisplus.core.injector.methods.SelectById;
-import com.baomidou.mybatisplus.core.injector.methods.SelectByMap;
 import com.baomidou.mybatisplus.core.injector.methods.SelectCount;
 import com.baomidou.mybatisplus.core.injector.methods.SelectList;
 import com.baomidou.mybatisplus.core.injector.methods.SelectMaps;
-import com.baomidou.mybatisplus.core.injector.methods.SelectMapsPage;
 import com.baomidou.mybatisplus.core.injector.methods.SelectObjs;
-import com.baomidou.mybatisplus.core.injector.methods.SelectOne;
-import com.baomidou.mybatisplus.core.injector.methods.SelectPage;
 import com.baomidou.mybatisplus.core.injector.methods.Update;
 import com.baomidou.mybatisplus.core.injector.methods.UpdateById;
 import com.baomidou.mybatisplus.core.mapper.Mapper;
@@ -118,14 +112,14 @@ public class ColumnsCheckInjector extends AbstractSqlInjector {
                 .add(new SelectObjs())
                 .add(new SelectList())
                 .add(new Update())
-                .add(new UpdateById())
+                .add(new UpdateById());
                 //这些虽然是过时方法，但是为了保险起见，还是注册进来
-                .add(new SelectByMap())
-                .add(new SelectMapsPage())
-                .add(new SelectOne())
-                .add(new SelectPage())
-                .add(new DeleteBatchByIds())
-                .add(new DeleteByMap());
+//                .add(new SelectByMap())
+//                .add(new SelectMapsPage())
+//                .add(new SelectOne())
+//                .add(new SelectPage())
+//                .add(new DeleteBatchByIds())
+//                .add(new DeleteByMap());
         return builder.build().collect(toList());
     }
 
