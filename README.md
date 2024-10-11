@@ -28,6 +28,7 @@
 - [x] 日志（链路追踪，请求日志，mongo，mySql，pgSql，mq，okhttp3）
 - [x] mongo（自定义id、操作人信息、操作时间等自动填充，mongo日志打印，时间类型精确转换）
 - [x] mysql（mybatis-plus，日志打印，公共方法封装，自动填充，数据库字段自动校验）
+- [x] redis（redisson，分布式锁，分布式下多级缓存，spring cache）
 
 ### 模块说明
 
@@ -39,6 +40,7 @@ cloud3scaffold
 └── third-provder-stater -- 第三方支持模块
      ├── mongo-provider-stater -- mongo支持配置
      ├── mysql-provider-stater -- mysql支持配置
+     ├── redis-provider-stater -- redis支持配置
 ```
 
 ### 问题解决 请查看[帮助文档](./HELP.md)

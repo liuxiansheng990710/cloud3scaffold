@@ -18,6 +18,8 @@ mapstruct = "1.5.5.Final"
 mapstruct-binding = "0.2.0"
 mybatis-plus-dunamic = "3.3.4"
 redisson = "3.35.0"
+caffeine = "3.1.8"
+transmittable = "2.14.5"
 
 [libraries]
 ##------------------------------------------------------boot依赖----------------------------------------------------------##
@@ -26,6 +28,10 @@ spring-boot = { module = "org.springframework.boot:spring-boot-dependencies", ve
 #spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springboot" }
 log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2", version.ref = "springboot" }
 mongo = { module = "org.springframework.boot:spring-boot-starter-data-mongodb", version.ref = "springboot" }
+
+##------------------------------------------------------alibaba依赖----------------------------------------------------------##
+
+transmittable = { module = "com.alibaba:transmittable-thread-local", version.ref = "transmittable" }
 
 ##------------------------------------------------------工具类依赖----------------------------------------------------------##
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
@@ -51,6 +57,7 @@ mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
 mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
 mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", version.ref = "mapstruct-binding" }
 redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
+caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
 
 
 [plugins]

@@ -5,6 +5,7 @@ dependencies {
     implementation  "org.springframework.boot:spring-boot-configuration-processor"
 
     api libs.redisson
+    api libs.caffeine
 
     annotationProcessor libs.lombok
 

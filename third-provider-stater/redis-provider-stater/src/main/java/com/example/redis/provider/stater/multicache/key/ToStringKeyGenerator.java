@@ -1,4 +1,4 @@
-package com.example.redis.provider.stater.genertor;
+package com.example.redis.provider.stater.multicache.key;
 
 import java.lang.reflect.Method;
 

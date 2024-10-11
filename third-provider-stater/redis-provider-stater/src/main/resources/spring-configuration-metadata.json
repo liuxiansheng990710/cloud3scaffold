@@ -1,60 +1,93 @@
 {
   "groups": [
     {
-      "name": "redis.redisson.custom",
+      "name": "redisson.custom",
       "type": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
       "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties"
+    },
+    {
+      "name": "redisson.custom.multi",
+      "type": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig"
     }
   ],
   "properties": [
     {
-      "name": "redis.redisson.custom.enable",
-      "type": "java.lang.Boolean",
-      "description": "是否启用redisson自定义配置",
-      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "redis.redisson.custom.client",
-      "type": "java.lang.Boolean",
-      "description": "是否启用自定义redisson客户端",
-      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "redis.redisson.custom.manager",
-      "type": "java.lang.Boolean",
-      "description": "是否启用自定义redisson缓存管理器",
-      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "redis.redisson.custom.interceptor",
-      "type": "java.lang.Boolean",
-      "description": "是否启用redisson 自定义拦截器配置",
-      "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
-      "defaultValue": true
-    },
-    {
-      "name": "redis.redisson.custom.log",
+      "name": "redisson.custom.enable",
       "type": "java.lang.Boolean",
       "description": "是否启用redisson 自定义配置",
       "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
       "defaultValue": true
     },
     {
-      "name": "redis.redisson.custom.page",
+      "name": "redisson.custom.client",
       "type": "java.lang.Boolean",
-      "description": "是否启用redisson 分页转换",
+      "description": "是否启用自定义 redisson客户端",
       "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
       "defaultValue": true
     },
     {
-      "name": "redis.redisson.custom.data",
+      "name": "redisson.custom.multiCache",
       "type": "java.lang.Boolean",
-      "description": "是否启用redisson 数据库检测",
+      "description": "是否 全局 启用自定义redisson 多级缓存",
       "sourceType": "com.example.redis.provider.stater.porperties.RedissonConfigProperties",
       "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.topic",
+      "type": "java.lang.Boolean",
+      "description": "缓存更新时通知其他节点的topic名称",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.multiLevel-cache",
+      "type": "java.lang.Boolean",
+      "description": "缓存更新时通知其他节点的topic名称",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.dynamic",
+      "type": "java.lang.Boolean",
+      "description": "是否根据cacheName动态创建Cache 与 SpringCache中dynamic保持一致",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.vagueEvict",
+      "type": "java.lang.Boolean",
+      "description": "是否支持模糊清理，当缓存KEY为String并且KEY中包含'*'，以及该字段设置为true时模糊清理才会生效",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.allowNullValues",
+      "type": "java.lang.Boolean",
+      "description": "否允许缓存null值（作用于缓存穿透）",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.clone",
+      "type": "java.lang.Boolean",
+      "description": "是否开启克隆（获取到克隆后的缓存对象 不直接操作原缓存对象）",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": true
+    },
+    {
+      "name": "redisson.custom.multi.initialCapacity",
+      "type": "java.lang.Integer",
+      "description": "一级缓存初始化大小",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": 20
+    },
+    {
+      "name": "redisson.custom.multi.maximumSize",
+      "type": "java.lang.Integer",
+      "description": "最大缓存对象个数，超过此数量时之前放入的缓存将失效",
+      "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
+      "defaultValue": 1000
     }
   ],
   "hints": []

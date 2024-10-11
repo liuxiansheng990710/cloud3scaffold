@@ -23,6 +23,10 @@
     - [mp拦截器](#拦截器)
     - [mp自动填充](#自动填充)
     - [mp自增Id](#id自增)
+- [redis配置](#redis)
+    - [redisson配置](#redisson配置)
+    - [多级缓存](#多级缓存)
+    - [分布式锁](#分布式锁)
 
 # 项目说明
 
@@ -65,6 +69,13 @@ cloud3scaffold
                   ├── model -- 公共实体
                   ├── service -- 公共方法
             ├── p6spy -- mysql日志打印
+     ├── redis-provider-stater -- redis支持配置
+            ├── autoconfigure -- redis自动装配
+            ├── multicache -- 多级缓存
+                  ├── autoconfigure -- 多级缓存自动装配
+                  ├── properties -- 多级缓存自定义配置
+                  ├── support -- 多级缓存支持
+            ├── properties -- redisson自定义配置
 ```
 
 </details>
@@ -154,7 +165,7 @@ cloud3scaffold
 <summary> 点击展开/折叠 mysql相关项目描述 </summary>
 
 > 默认开启下面四个配置，如需关闭，请查看关闭示例
- 
+
 ```yaml
 # 全部关闭
 mybatis-plus:
@@ -171,7 +182,8 @@ batis-plus:
 
 ## 日志配置
 
-- 基于 [**p6spy**](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/p6spy) 实现 使用时详见[配置示例](./sample/mysql/CONFIG.md)
+- 基于 [**p6spy**](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/p6spy) 实现
+  使用时详见[配置示例](./sample/mysql/CONFIG.md)
 
 ## 数据库检查
 
@@ -179,6 +191,7 @@ batis-plus:
 - 主要作用：检查代码字段与数据库字段是否一致，防止使用代码字段操作数据库字段时出现字段不存在问题
 - 防止代码上线，但是数据库sql未执行导致报错
 - **注意** ：该配置会增加项目启动时间，如需关闭请见关闭示例
+  
   ```yaml
   # 关闭示例
   batis-plus:
@@ -195,10 +208,12 @@ batis-plus:
 - 详见[mp拦截器配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
 
 ## 自动填充
+
 - 基于mp 实现部分sql字段自动填充
 - 详见[mp自动填充配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
 
 ## id自增
+
 - 基于mp 实现id自定义自增
 - 详见[mpid自增配置](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/autoconfigure/MyBatisPlustAutoConfiguration.java)
 
@@ -206,5 +221,52 @@ batis-plus:
 
 - 基于mp 优化部分方法
   详见[Service](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/service) 、 [Model](./third-provider-stater/mysql-provider-stater/src/main/java/com/example/mysql/provider/stater/mp/model)
+
+</details>
+
+
+# redis
+
+<details open>
+<summary> 点击展开/折叠 redis相关项目描述 </summary>
+
+**注意：使用Spring Cache时请在启动类添加@EnableCaching注解**
+
+
+## redisson配置
+
+- 使用json方式进行配置（方便对不同环境配置进行区分）
+
+  > 使用示例详见[基于json方式配置redisson客户端](./sample/redis/REDISSONCLIENT.md)
+
+
+## 多级缓存
+
+- 基于redisson + spring cache + caffeine实现
+- [缓存管理器](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/multicache/autoconfigure/MultiCacheAutoConfiguration.java)
+  的主要作用是为每个缓存添加一个缓存管理器，管理由Spring Cache产生的缓存
+  > 使用示例详见[基于json方式配置Spring Cache缓存管理器](./sample/redis/CACHE.md) 
+
+- [缓存监听器](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/multicache/support/RedissonCaffeineCacheListener.java)
+的主要作用是清理分布式下的一级缓存
+  > 使用示例详见[缓存监听器](./sample/redis/CACHE.md)，需要在yaml中进行配置其他节点topic
+
+- 多级缓存开关详见[多级缓存配置示例](./sample/redis/CACHE.md)
+
+
+
+## 分布式锁
+
+
+
+
+
+
+
+
+
+
+
+
 
 </details>
