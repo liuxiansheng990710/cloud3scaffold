@@ -9,6 +9,11 @@
       "name": "redisson.custom.multi",
       "type": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
       "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig"
+    },
+    {
+      "name": "redisson.custom.klock",
+      "type": "com.example.redis.provider.stater.lock.properties.KlockConfig",
+      "sourceType": "com.example.redis.provider.stater.lock.properties.KlockConfig"
     }
   ],
   "properties": [
@@ -88,6 +93,20 @@
       "description": "最大缓存对象个数，超过此数量时之前放入的缓存将失效",
       "sourceType": "com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig",
       "defaultValue": 1000
+    },
+    {
+      "name": "redisson.custom.klock.waitTime",
+      "type": "java.lang.Integer",
+      "description": "尝试加锁，最多等待时间",
+      "sourceType": "com.example.redis.provider.stater.lock.properties.KlockConfig",
+      "defaultValue": 0
+    },
+    {
+      "name": "redisson.custom.klock.leaseTime",
+      "type": "java.lang.Integer",
+      "description": "上锁以后xxx秒自动解锁",
+      "sourceType": "com.example.redis.provider.stater.lock.properties.KlockConfig",
+      "defaultValue": 5
     }
   ],
   "hints": []

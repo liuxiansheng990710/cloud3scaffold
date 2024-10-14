@@ -97,6 +97,17 @@ public class ResponseUtils {
     }
 
     /**
+     * 发送错误信息，带自定义异常信息、提示信息
+     *
+     * @param request
+     * @param response
+     * @param errors
+     */
+    public static void sendFail(HttpServletRequest request, HttpServletResponse response, Errors errors, Exception exception, String exceptionMsg, String desc) {
+        responseAndPrint(request, new ResponseWrapper(response, errors), failure(errors, exception, exceptionMsg, desc));
+    }
+
+    /**
      * 失败返回
      *
      * @param errors
@@ -125,6 +136,24 @@ public class ResponseUtils {
     public static <T> Responses<T> failure(Errors errors, Throwable throwable, String exceptionMsg) {
         Responses<T> failureResponse = new Responses<>();
         return failureResponse.setError(errors.getError())
+                .setMsg(errors.getMsg())
+                .setException(StringUtils.isNotBlank(exceptionMsg) ? exceptionMsg : getValidException(errors.getStatus(), throwable))
+                .setRanking(errors.getRanking())
+                .setStatus(errors.getStatus())
+                .setTime(new Date());
+    }
+
+    /**
+     * 失败返回，自定义异常信息、提示信息
+     *
+     * @param errors
+     * @param <T>
+     * @return
+     */
+    public static <T> Responses<T> failure(Errors errors, Throwable throwable, String exceptionMsg, String desc) {
+        Responses<T> failureResponse = new Responses<>();
+        return failureResponse.setError(errors.getError())
+                .setDesc(desc)
                 .setMsg(errors.getMsg())
                 .setException(StringUtils.isNotBlank(exceptionMsg) ? exceptionMsg : getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())

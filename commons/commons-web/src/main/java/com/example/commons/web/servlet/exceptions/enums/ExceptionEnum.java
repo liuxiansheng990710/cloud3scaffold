@@ -38,8 +38,10 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.alibaba.fastjson2.JSONException;
-import com.example.commons.core.exceptions.CommonUtilsException;
 import com.example.commons.core.exceptions.ApiException;
+import com.example.commons.core.exceptions.CommonUtilsException;
+import com.example.commons.core.exceptions.KlockInvocationException;
+import com.example.commons.core.exceptions.KlockTimeoutException;
 import com.example.commons.core.exceptions.ServerException;
 import com.example.commons.web.servlet.resolver.GlobalExceptionHandler;
 import com.example.commons.web.utils.ResponseUtils;
@@ -157,23 +159,21 @@ public enum ExceptionEnum implements GlobalExceptionHandler {
 //        }
 //    },
 
-    //TODO
-//    KLOCK_INVOCATION_EXCEPTION(KlockInvocationException.class, "分布式锁调用异常") {
-//        @Override
-//        public void handle(HttpServletRequest request, HttpServletResponse response, Exception ex) {
-//            KlockInvocationException klockInvocationException = (KlockInvocationException) ex;
-//            ResponseUtils.sendFail(request, response, x2000, klockInvocationException, klockInvocationException.getMessage());
-//        }
-//    },
+    KLOCK_INVOCATION_EXCEPTION(KlockInvocationException.class, "分布式锁调用异常") {
+        @Override
+        public void handle(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+            KlockInvocationException klockInvocationException = (KlockInvocationException) ex;
+            ResponseUtils.sendFail(request, response, x2000, klockInvocationException, klockInvocationException.getMessage());
+        }
+    },
 
-    //TODO
-//    KLOCK_TIMEOUT_EXCEPTION(KlockTimeoutException.class, "分布式锁超时异常") {
-//        @Override
-//        public void handle(HttpServletRequest request, HttpServletResponse response, Exception ex) {
-//            KlockTimeoutException klockTimeoutException = (KlockTimeoutException) ex;
-//            ResponseUtils.sendFail(request, response, x2000, klockTimeoutException, klockTimeoutException.getMessage());
-//        }
-//    },
+    KLOCK_TIMEOUT_EXCEPTION(KlockTimeoutException.class, "分布式锁超时异常") {
+        @Override
+        public void handle(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+            KlockTimeoutException klockTimeoutException = (KlockTimeoutException) ex;
+            ResponseUtils.sendFail(request, response, x2000, klockTimeoutException, klockTimeoutException.getMessage(), klockTimeoutException.getErrorMsg());
+        }
+    },
 
     HTTP_CLIENT_ERROR_EXCEPTION_UNAUTHORIZED(HttpClientErrorException.Unauthorized.class, "未经授权的HTTP请求") {
         @Override

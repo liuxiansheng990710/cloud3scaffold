@@ -3,6 +3,7 @@ package com.example.redis.provider.stater.porperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
+import com.example.redis.provider.stater.lock.properties.KlockConfig;
 import com.example.redis.provider.stater.multicache.properties.RedissonCaffeineCacheConfig;
 
 import lombok.Data;
@@ -33,5 +34,11 @@ public class RedissonConfigProperties {
      */
     @NestedConfigurationProperty
     private RedissonCaffeineCacheConfig multi = new RedissonCaffeineCacheConfig(900000L, 900000L);
+
+    /**
+     * 分布式锁配置
+     */
+    @NestedConfigurationProperty
+    private KlockConfig klock = new KlockConfig();
 
 }

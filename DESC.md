@@ -257,16 +257,16 @@ batis-plus:
 
 ## 分布式锁
 
-
-
-
-
-
-
-
-
-
-
-
+- 基于redisson实现
+- 自定义分布式锁[注解](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/lock/annotations/Klock.java)
+- 自定义注解扩展点：
+  1. 开发过程中，不需要关注锁的生命周期，只需关注自己业务即可
+  2. 业务结束后，自动释放锁，不需要处理锁的释放时机
+  3. 支持多次重试获取锁
+  4. 拥有多种获取锁超时、释放锁超时解决方案，且支持自定义解决方案
+  5. 支持自定义提示信息
+  6. 作用于方法上，可结合[klockKey](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/lock/annotations/KlockKey.java)实现锁粒度控制
+- [使用示例](./sample/redis/KLOCK.md)
+- [具体实现](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/lock/handler/KlockAspectHandler.java)
 
 </details>

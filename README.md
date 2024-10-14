@@ -19,7 +19,7 @@
 
 | 依赖                        | 版本       |
 | --------------------------- | ---------- |
-| [gradle](./DESC.md#gradle)  | 8.8        |
+| gradle  | 8.8        |
 | Spring Boot                 | 3.3.4      |
 | MyBatis Plus                | 3.5.7      |
 
