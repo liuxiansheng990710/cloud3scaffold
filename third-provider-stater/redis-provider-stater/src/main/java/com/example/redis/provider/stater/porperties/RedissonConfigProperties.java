@@ -30,6 +30,11 @@ public class RedissonConfigProperties {
     private boolean multiCache = true;
 
     /**
+     * redisson配置文件路径
+     */
+    private String config = "classpath:redisson-config.json";
+
+    /**
      * 多级缓存配置，默认缓存十五分钟
      */
     @NestedConfigurationProperty

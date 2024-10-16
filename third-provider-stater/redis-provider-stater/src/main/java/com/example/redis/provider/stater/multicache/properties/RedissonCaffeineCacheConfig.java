@@ -31,6 +31,11 @@ public class RedissonCaffeineCacheConfig extends CacheConfig {
     }
 
     /**
+     * 缓存配置文件路径
+     */
+    private String config = "classpath:cache-config.json";
+
+    /**
      * 缓存更新时通知其他节点的topic名称
      */
     private String topic = "cache:caffeine:redisson:topic";

@@ -6,6 +6,7 @@ import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.redisson.config.ConfigSupport;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ResourceLoaderAware;
@@ -43,9 +44,10 @@ public class RedissonAutoConfiguration implements ResourceLoaderAware {
      * @throws IOException
      */
     @Bean(destroyMethod = "shutdown")
+    @ConditionalOnMissingBean(RedissonClient.class)
     @ConditionalOnProperty(name = RedissonConfigProperties.REDISSON_CONFIG_PROPERTIES + ".client", matchIfMissing = true)
-    public RedissonClient redissonClient() throws IOException {
-        Resource resource = resourceLoader.getResource("classpath:redisson-config.json");
+    public RedissonClient redissonClient(RedissonConfigProperties redissonConfigProperties) throws IOException {
+        Resource resource = resourceLoader.getResource(redissonConfigProperties.getConfig());
         ConfigSupport configSupport = new ConfigSupport();
         return Redisson.create(configSupport.fromJSON(resource.getInputStream(), Config.class));
     }
