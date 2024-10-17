@@ -27,6 +27,10 @@
     - [redisson配置](#redisson配置)
     - [多级缓存](#多级缓存)
     - [分布式锁](#分布式锁)
+- [定时任务配置](#定时任务)
+    - [自动注册](#自动注册定时任务)
+    - [集群配置](#集群配置)
+    - [可视化配置](#具体实现)
 
 # 项目说明
 
@@ -76,6 +80,11 @@ cloud3scaffold
                   ├── properties -- 多级缓存自定义配置
                   ├── support -- 多级缓存支持
             ├── properties -- redisson自定义配置
+     ├── quartz-provider-stater -- 定时任务支持配置
+            ├── autoconfigure -- 集群自动装配
+            ├── enums -- 定时任务枚举
+            ├── factory -- 定时任务工厂
+            ├── support -- 定时任务实现支持   
 ```
 
 </details>
@@ -268,5 +277,53 @@ batis-plus:
   6. 作用于方法上，可结合[klockKey](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/lock/annotations/KlockKey.java)实现锁粒度控制
 - [使用示例](./sample/redis/KLOCK.md)
 - [具体实现](./third-provider-stater/redis-provider-stater/src/main/java/com/example/redis/provider/stater/lock/handler/KlockAspectHandler.java)
+
+</details>
+
+# 定时任务
+
+<details open>
+<summary> 点击展开/折叠 定时任务相关项目描述 </summary>
+
+## 具体实现
+
+- 基于quartz实现，详见[定时任务支持](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support)
+- 可视化及页面操作
+    - 添加定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中的 **addJob** 方法，添加定时任务，顺便将定时任务信息存库
+    - 查询定时任务：从定时任务信息表中获取
+    - 修改定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中的 **updateJobCron** 方法，顺便将新信息存库 
+    - 删除定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中 **deleteJob** 或 **deleteJobs** 方法，顺便将定时任务信息从库中删除
+    - 暂停定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中的 **pauseJob** 方法，顺便更新定时任务信息库
+    - 恢复定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中的 **resumeJob** 方法，顺便更新定时任务信息库
+    - 立刻执行定时任务：使用页面+接口方式，调用[任务管理器](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzManage.java)
+      中的 **runAJobNow** 方法 
+
+
+- 自动注册定时任务，详见[定时任务工厂](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/factory/QuartzFactory.java)具体实现
+  > 该方式虽然配置简单，但是对于自定义参数无法实现，请根据自身情况选择自动注册还是页面操作注册
+
+- 定时任务日志，详见[定时任务执行器配置](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/support/QuartzExecutionJob.java)具体实现
+  > 在执行器中，这里只是做了日志打印，个人感觉，将运行日志存库毕竟好，方便页面查看，请根据自身情况选择
+
+## 配置
+
+### 集群配置
+
+> 详见[集群配置](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/autoconfigure/ScheduleAutoConfiguration.java)具体实现
+
+
+### 自动注册定时任务
+
+> 配置示例详见[自动注册定时任务](./sample/quartz/AUTO.md)，如果使用可视化配置，请关闭该[配置](./third-provider-stater/quartz-provider-stater/src/main/java/com/example/quartz/provider/stater/factory/QuartzFactory.java)，减少项目启动时间
+
+### quartz所需表配置
+
+- 建议某个服务单独做定时任务，这样只需要在固定的库添加quartz所需表即可
+- [quartz所需表](https://blog.csdn.net/mianyao1004/article/details/105363750)
 
 </details>

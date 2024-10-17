@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(":commons:commons-core")
+    api ("org.springframework.boot:spring-boot-starter-quartz")
+
+    annotationProcessor libs.lombok
+    annotationProcessor libs.mapstruct.processor
+    annotationProcessor libs.mapstruct.binding
+}

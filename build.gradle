@@ -39,5 +39,6 @@ subprojects { subproject ->
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
         exclude group: 'org.apache.tomcat', module: 'tomcat-jdbc'
+        exclude group: 'com.mchange', module: 'c3p0'
     }
 }

@@ -35,7 +35,7 @@ public class P6spyLogFormat implements MessageFormattingStrategy {
         if (StringUtils.isBlank(sql) || PING_SQL.equals(sql)) {
             return null;
         }
-        if (CharSequenceUtil.startWithIgnoreCase(prepared, "SELECT COLUMN_NAME") || CharSequenceUtil.startWithIgnoreCase(prepared, "SELECT A.ATTNAME AS COLUMN_NAME")) {
+        if (CharSequenceUtil.startWithIgnoreCase(Thread.currentThread().getName(), "quartz") || CharSequenceUtil.startWithIgnoreCase(prepared, "SELECT COLUMN_NAME") || CharSequenceUtil.startWithIgnoreCase(prepared, "SELECT A.ATTNAME AS COLUMN_NAME")) {
             return null;
         }
         SQLLogger sqlLogger = new SQLLogger();

@@ -29,6 +29,7 @@
 - [x] mongo（自定义id、操作人信息、操作时间等自动填充，mongo日志打印，时间类型精确转换）
 - [x] mysql（mybatis-plus，日志打印，公共方法封装，自动填充，数据库字段自动校验）
 - [x] redis（redisson，分布式锁，分布式下多级缓存，spring cache）
+- [x] 定时任务（quartz，可视化，页面型操作，运行日志，自动注册，异步执行）
 
 ### 模块说明
 
@@ -41,6 +42,7 @@ cloud3scaffold
      ├── mongo-provider-stater -- mongo支持配置
      ├── mysql-provider-stater -- mysql支持配置
      ├── redis-provider-stater -- redis支持配置
+     ├── quartz-provider-stater -- 定时任务支持配置
 ```
 
 ### 问题解决 请查看[帮助文档](./HELP.md)
