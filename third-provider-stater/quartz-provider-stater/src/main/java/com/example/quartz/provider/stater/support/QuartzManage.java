@@ -84,7 +84,7 @@ public class QuartzManage {
      */
     public boolean exists(Long jobId) {
         try {
-            return scheduler.checkExists(new JobKey(QuartzCons.JOB_NAME_PREFIX + jobId));
+            return scheduler.checkExists(JobKey.jobKey(QuartzCons.JOB_NAME_PREFIX + jobId));
         } catch (SchedulerException e) {
             log.error("Failed to exists scheduled task: {}", Throwables.getStackTraceAsString(e));
             throw new ServerException("Failed to exists scheduled task", e);
@@ -180,6 +180,20 @@ public class QuartzManage {
         try {
             List<JobKey> jobKeys = quartzJobs.stream().map(quartzJob -> JobKey.jobKey(QuartzCons.JOB_NAME_PREFIX + quartzJob.getId())).collect(Collectors.toList());
             scheduler.deleteJobs(jobKeys);
+        } catch (Exception e) {
+            log.error("Failed to delete scheduled task: {}", Throwables.getStackTraceAsString(e));
+            throw new ServerException("Failed to delete scheduled task", e);
+        }
+    }
+
+    /**
+     * 删除所有定时任务
+     *
+     * @throws SchedulerException
+     */
+    public void clear() {
+        try {
+            scheduler.clear();
         } catch (Exception e) {
             log.error("Failed to delete scheduled task: {}", Throwables.getStackTraceAsString(e));
             throw new ServerException("Failed to delete scheduled task", e);
