@@ -1,6 +1,9 @@
 [versions]
 ##------------------------------------------------------主要依赖版本----------------------------------------------------------##
 springboot = "3.3.4"
+springcloud = "2023.0.1"
+springcloudalibaba = "2023.0.1.0"
+micrometer = "1.3.5"
 ##------------------------------------------------------工具类版本----------------------------------------------------------##
 jackson = "2.17.2"
 modelmapper = "3.2.0"
@@ -26,11 +29,17 @@ transmittable = "2.14.5"
 spring-boot = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springboot" }
 #spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "springboot" }
 #spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "springboot" }
-log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2", version.ref = "springboot" }
+#log4j2 = { module = "org.springframework.boot:spring-boot-starter-log4j2", version.ref = "springboot" }
 mongo = { module = "org.springframework.boot:spring-boot-starter-data-mongodb", version.ref = "springboot" }
 
-##------------------------------------------------------alibaba依赖----------------------------------------------------------##
+##------------------------------------------------------cloud依赖----------------------------------------------------------##
+spring-cloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springcloud" }
+#由sleuth迁移过来
+micrometer-tracing = { module = "io.micrometer:micrometer-tracing", version.ref = "micrometer" }
+micrometer-tracing-bridge-brave = { module = "io.micrometer:micrometer-tracing-bridge-brave", version.ref = "micrometer" }
 
+##------------------------------------------------------alibaba依赖----------------------------------------------------------##
+spring-cloud-alibaba = { module = "com.alibaba.cloud:spring-cloud-alibaba-dependencies", version.ref = "springcloudalibaba" }
 transmittable = { module = "com.alibaba:transmittable-thread-local", version.ref = "transmittable" }
 
 ##------------------------------------------------------工具类依赖----------------------------------------------------------##
@@ -59,6 +68,9 @@ mapstruct-binding = { module = "org.projectlombok:lombok-mapstruct-binding", ver
 redisson = { module = "org.redisson:redisson", version.ref = "redisson" }
 caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
 
+[bundles]
+micrometer = ["micrometer-tracing", "micrometer-tracing-bridge-brave"]
+tools = ["jackson-databind", "jackson-jsr310", "modelMapper", "fastjson2", "hutool", "commons-lang3", "commons-text", "lombok"]
 
 [plugins]
 #spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }

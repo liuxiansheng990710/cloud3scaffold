@@ -32,6 +32,8 @@ subprojects { subproject ->
 
     dependencies {
         implementation platform(libs.spring.boot)
+        implementation platform(libs.spring.cloud)
+        implementation platform(libs.spring.cloud.alibaba)
     }
 
     //全局剔除依赖

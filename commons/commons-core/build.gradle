@@ -3,17 +3,15 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter"
     api "org.springframework.boot:spring-boot-starter-validation"
     api "org.springframework.boot:spring-boot-starter-aop"
+    api "org.springframework.boot:spring-boot-starter-log4j2"
+    //微服务性能收集, 同时micrometer的自动装配也是在该类下
+    api "org.springframework.boot:spring-boot-starter-actuator"
+
+    //cloud相关依赖
+    api libs.bundles.micrometer
 
     //工具类依赖
-    api libs.log4j2
-    api libs.jackson.databind
-    api libs.jackson.jsr310
-    api libs.modelMapper
-    api libs.fastjson2
-    api libs.hutool
-    api libs.google.guava
-    api libs.commons.lang3
-    api libs.lombok
+    api libs.bundles.tools
     api libs.mapstruct
     api libs.transmittable
     //异步日志打印驱动
