@@ -3,27 +3,33 @@
 ## 系统说明
 
 - 基于 Spring Cloud 2023.0.1 、Spring Boot 3.3.4 、 Spring Cloud Alibaba 2023.0.1.0 、Mybatis-Plus 3.5.7 **微服务架构**
-- 提供 lambda 、stream api 、webflux 的生产实践
 
 ## 快速开始
 
 ### 说明
 
-- 1.0.0 : jdk17 + springboot 3.3.4 + springcloud 2023.0.1 + springcloudalibaba 2023.0.1.0
-
 | 分支   | 说明                                             |
 | ------ | ------------------------------------------------ |
-| master | jdk17 + springboot 3.3.4 + springcloud 2023.0.1 + springcloudalibaba 2023.0.1.0 |
+| master | 脚手架纯享版本|
+| alpha  | 开发版本|
+| provider| 示例版本|
 
 ### 核心依赖
 
-| 依赖                         | 版本       |
+| 依赖                         | 版本        |
 | --------------------------  | ---------- |
+| jdk                         | 17         |
 | gradle                      | 8.8        |
 | Spring Boot                 | 3.3.4      |
 | Spring Cloud                | 2023.0.1   |
 | Spring Cloud Alibaba        | 2023.0.1.0 |
 | MyBatis Plus                | 3.5.7      |
+
+### 组件对应版本
+
+|Spring Cloud Alibaba Version|Sentinel Version|Nacos Version|RocketMQ Version|Seata Version|
+| --------------------------  | ---------- | --------------------------  | ---------- | ---------- |
+|2023.0.1.0| 1.8.6| 2.3.2| 5.1.4 |2.0.0|
 
 ### 支持
 
