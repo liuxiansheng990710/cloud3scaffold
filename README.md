@@ -2,7 +2,7 @@
 
 ## 系统说明
 
-- 基于 Spring Cloud 2023.0.1 、Spring Boot 3.3.4 、 Soring Cloud Alibaba 2023.0.1.0 、Mybatis-Plus 3.5.7 **微服务架构**
+- 基于 Spring Cloud 2023.0.1 、Spring Boot 3.3.4 、 Spring Cloud Alibaba 2023.0.1.0 、Mybatis-Plus 3.5.7 **微服务架构**
 - 提供 lambda 、stream api 、webflux 的生产实践
 
 ## 快速开始
