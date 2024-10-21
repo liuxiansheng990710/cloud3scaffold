@@ -73,7 +73,7 @@ caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "c
 
 [bundles]
 micrometer = ["micrometer-tracing", "micrometer-tracing-bridge-brave"]
-tools = ["jackson-databind", "jackson-jsr310", "modelMapper", "fastjson2", "hutool", "commons-lang3", "commons-text", "lombok"]
+tools = ["jackson-databind", "jackson-jsr310", "modelMapper", "fastjson2", "hutool", "commons-lang3", "commons-text", "lombok", "google-guava"]
 
 [plugins]
 #spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }
