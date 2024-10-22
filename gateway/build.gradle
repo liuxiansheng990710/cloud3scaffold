@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(":commons:commons-core")
+
+    api "org.springframework.cloud:spring-cloud-starter-gateway"
+    //路由负载均衡使用loadbalancer
+    api "org.springframework.cloud:spring-cloud-starter-loadbalancer"
+
+    annotationProcessor libs.lombok
+}

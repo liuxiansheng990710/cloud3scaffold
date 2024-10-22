@@ -1,0 +1,34 @@
+server:
+  port: 2100
+
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: alpha
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.94.0.13:8848
+        group: ALPHA_GROUP
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        import-check:
+          enabled: false
+
+    gateway:
+      httpclient:
+        connect-timeout: 2000
+        response-timeout: 10s
+
+      routes:
+        - id: base
+          uri: lb://provider-base
+          predicates:
+            - Path=/base/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  config: classpath:log4j2-local.xml

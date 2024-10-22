@@ -126,7 +126,7 @@ public abstract class ThreadUtils {
      */
     public static <E> Future<E> submit(Callable<E> runnable) {
         Map<String, String> parentContextMap = MDC.getCopyOfContextMap();
-        AtomicReference<E> result = null;
+        AtomicReference<E> result = new AtomicReference<>();
         return getExecutor().<E>submit(() -> {
             try {
                 MDC.setContextMap(parentContextMap);
