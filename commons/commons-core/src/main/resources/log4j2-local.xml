@@ -38,7 +38,7 @@
         <AsyncLogger name="com.example" level="INFO" includeLocation="true"/>
         <AsyncLogger name="com.example.mysql.provider.stater.p6spy" level="DEBUG" includeLocation="true"/>
 <!--        <AsyncLogger name="com.example.commons.core.utils.OkHttpUtils" level="DEBUG" includeLocation="true"/>-->
-<!--        <AsyncLogger name="com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder" level="ERROR" includeLocation="true"/>-->
+        <AsyncLogger name="com.alibaba.cloud.nacos.client.NacosPropertySourceBuilder" level="ERROR" includeLocation="true"/>
         <!--异步根节点配置，打印CONSOLE中wran的日志 -->
         <AsyncRoot level="WARN" includeLocation="true">
             <appender-ref ref="CONSOLE"/>

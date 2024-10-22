@@ -6,6 +6,8 @@
 
 - [mysql相关问题](#mysql相关问题)
 
+- [启动日志相关问题](#启动日志问题)
+
 
 ## gradle构建问题
 
@@ -13,7 +15,7 @@
 <summary> 点击展开/折叠 gradle构建问题 </summary>
 
 ### - Problem: In version catalog libs, you can only call the 'from' method a single time
-这里在首次构建失败后再次构件时，可能在setting.gradle会出现该报错
+> 这里在首次构建失败后再次构建时，可能在setting.gradle会出现该报错
 - 此时需要将versionCatalogs下的libs改个名 重新构建 成功后再改回libs即可
 - 或者直接删除.gradle文件 重新构建
 
@@ -43,11 +45,29 @@
 ## mysql相关问题
 
 <details open>
-<summary> 点击展开/折叠 项目说明 </summary>
+<summary> 点击展开/折叠 mysql相关问题 </summary>
 
 ### - Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
 
-结合p6spy使用的时候，如果是mysql8.x 则需要使用com.mysql.cj.jdbc.Driver，所以在spy.properties文件中，修改**driverlist**
+> 结合p6spy使用的时候，如果是mysql8.x 则需要使用com.mysql.cj.jdbc.Driver，所以在spy.properties文件中，修改**driverlist**
+
+
+
+</details>
+
+## 启动日志问题
+
+<details open>
+<summary> 点击展开/折叠 启动日志问题 </summary>
+
+### - main WARN The use of package scanning to locate plugins is deprecated and will be removed in a future release
+
+**main WARN No Root logger was configured, creating default ERROR-level Root logger with Console appender**
+
+> 这是因为nacos与log4j2版本兼容问题导致，详见[议题](https://github.com/alibaba/nacos/issues/12102)
+
+> 未来可能会升级版本解决该问题，目前先添加系统属性规避
+
 
 
 
