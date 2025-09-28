@@ -1,4 +1,4 @@
-package com.example.commons.web.servlet.cons;
+package com.example.commons.core.cons;
 
 /**
  * <p>

@@ -1,0 +1,8 @@
+dependencies {
+    api project(":commons:commons-core")
+    api project(":commons:commons-web")
+    api project(":third-provider-stater:mongo-provider-stater")
+    api project(":third-provider-stater:mysql-provider-stater")
+    api project(":third-provider-stater:redis-provider-stater")
+    api project(":third-provider-stater:quartz-provider-stater")
+}

@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.example.commons.core.model.Responses;
-import com.example.commons.web.servlet.cons.RequestCons;
+import com.example.commons.core.cons.RequestCons;
 import com.example.commons.web.utils.ResponseUtils;
 
 import jakarta.servlet.http.HttpServletRequest;

@@ -65,4 +65,9 @@ public class Responses<T> implements Serializable {
      */
     private T result;
 
+    /**
+     * 请求id
+     */
+    private String requestId;
+
 }

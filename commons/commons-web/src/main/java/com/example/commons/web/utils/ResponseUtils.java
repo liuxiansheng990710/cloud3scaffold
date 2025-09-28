@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.MDC;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -15,12 +16,12 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 
+import com.example.commons.core.cons.RequestCons;
 import com.example.commons.core.enums.LogEnum;
-import com.example.commons.core.model.log.RequestLogger;
 import com.example.commons.core.model.Errors;
 import com.example.commons.core.model.Responses;
+import com.example.commons.core.model.log.RequestLogger;
 import com.example.commons.core.utils.TypeUtils;
-import com.example.commons.web.servlet.cons.RequestCons;
 import com.example.commons.web.servlet.response.ResponseWrapper;
 import com.google.common.base.Throwables;
 
@@ -71,6 +72,7 @@ public class ResponseUtils {
         responses.setStatus(status.value());
         responses.setResult(object);
         responses.setTime(new Date());
+        responses.setRequestId(getRequestIdByMDC());
         return responses;
     }
 
@@ -123,6 +125,7 @@ public class ResponseUtils {
                 .setException(getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())
                 .setStatus(errors.getStatus())
+                .setRequestId(getRequestIdByMDC())
                 .setTime(new Date());
     }
 
@@ -140,6 +143,7 @@ public class ResponseUtils {
                 .setException(StringUtils.isNotBlank(exceptionMsg) ? exceptionMsg : getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())
                 .setStatus(errors.getStatus())
+                .setRequestId(getRequestIdByMDC())
                 .setTime(new Date());
     }
 
@@ -158,6 +162,7 @@ public class ResponseUtils {
                 .setException(StringUtils.isNotBlank(exceptionMsg) ? exceptionMsg : getValidException(errors.getStatus(), throwable))
                 .setRanking(errors.getRanking())
                 .setStatus(errors.getStatus())
+                .setRequestId(getRequestIdByMDC())
                 .setTime(new Date());
     }
 
@@ -264,5 +269,10 @@ public class ResponseUtils {
         ;
         return logger;
     }
+
+    private static String getRequestIdByMDC() {
+        return MDC.getCopyOfContextMap().get("traceId");
+    }
+
 
 }

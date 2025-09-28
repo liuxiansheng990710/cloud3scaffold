@@ -47,6 +47,10 @@ include 'commons:commons-web'
 findProject('commons:commons-web')?.name = 'commons-web'
 include 'commons:commons-core'
 findProject(':commons:commons-core')?.name = 'commons-core'
+//-----------------------------------------------服务组件---------------------------------------------------------//
+include 'provider'
+include 'provider:provider-base'
+findProject('provider:provider-base')?.name = 'provider-base'
 //-----------------------------------------------第三方组件---------------------------------------------------------//
 include 'third-provider-stater'
 include 'third-provider-stater:mongo-provider-stater'
@@ -57,4 +61,5 @@ include 'third-provider-stater:redis-provider-stater'
 findProject(':third-provider-stater:redis-provider-stater')?.name = 'redis-provider-stater'
 include 'third-provider-stater:quartz-provider-stater'
 findProject(':third-provider-stater:quartz-provider-stater')?.name = 'quartz-provider-stater'
+include 'gateway'
 

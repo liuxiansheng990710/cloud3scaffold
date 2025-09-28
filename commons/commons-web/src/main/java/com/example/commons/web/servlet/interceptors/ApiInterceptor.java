@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.example.commons.web.servlet.cons.RequestCons;
+import com.example.commons.core.cons.RequestCons;
 import com.example.commons.web.utils.ApplicationUtils;
 
 import jakarta.servlet.http.HttpServletRequest;

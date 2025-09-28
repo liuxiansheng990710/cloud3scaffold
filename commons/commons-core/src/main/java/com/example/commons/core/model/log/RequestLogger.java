@@ -36,7 +36,7 @@ public class RequestLogger extends SuperLogger {
     /**
      * 请求参数
      */
-    private Map<String, String[]> parameterMap;
+    private Map parameterMap;
     /**
      * 请求体
      */
